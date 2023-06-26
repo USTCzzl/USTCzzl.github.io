@@ -11,30 +11,23 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+
+* Ph.D in Hefei, University of Science and Technology of China, 2020-2024 (expected)
+* M.S. in Hefei, University of Science and Technology of China, 2017-2020
+* B.S. in Wuhan, Wuhan University of Technology, 2012-2016
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* 2019.07 - 2019.08: Research Assitant in DeeCamp
+* 2016.07 - 2016.02: Assistant Engineer in ASEA Brown Boveri(ABB) co.
+* 2015.06 - 2015.09: Assistant Engineer in Dongfeng Motor co.
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* C++
+* Python
+* Markdown
+* LaTeX
 
 Publications
 ======
