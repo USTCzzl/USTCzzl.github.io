@@ -1,31 +1,77 @@
-A Github Pages template for academic websites. This was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
+# Zhangli Zhou Academic Homepage
 
-I think I've got things running smoothly and fixed some major bugs, but feel free to file issues or make pull requests if you want to improve the generic template / theme.
+This is a static GitHub Pages homepage draft for `https://ustczzl.github.io/`.
+It replaces the current AcademicPages template front page with a single-page research profile focused on papers, videos, code, CV, and contact links.
 
-### Note: if you are using this repo and now get a notification about a security vulnerability, delete the Gemfile.lock file. 
+## Files
 
-# Instructions
+- `index.html` - homepage content and SEO metadata
+- `styles.css` - responsive layout and visual system
+- `script.js` - mobile menu, publication search/filter/year controls, BibTeX copy, and visitor map logic
+- `feed.xml` - RSS feed for research news
+- `assets/data/publications.json` - generated publication data
+- `assets/data/publications.bib` - generated BibTeX export
+- `assets/data/news.json` - editable news source
+- `assets/data/publication-links.json` - manual DOI/arXiv/code/video/title overrides preserved during DBLP sync
+- `scripts/sync-dblp.mjs` - pulls DBLP, regenerates publications, BibTeX, RSS, and news blocks
+- `scripts/add-news.mjs` - adds an immediate acceptance/news item before DBLP has indexed the paper
+- `.github/workflows/sync-publications.yml` - GitHub Actions workflow that syncs DBLP every 6 hours or on manual dispatch
+- `assets/hero-local-observation.jpg` - robot experiment image used for the first screen
+- `assets/video-*.jpg` - local YouTube cover images for the video cards
+- `robots.txt` and `sitemap.xml` - search engine helpers
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this repository](https://github.com/academicpages/academicpages.github.io) by clicking the "fork" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](http://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+## Deploy
 
-See more info at https://academicpages.github.io/
+Place these files at the root of the `USTCzzl.github.io` repository and push to GitHub Pages. No build command is required.
 
-## To run locally (not on GitHub Pages, to serve on your own computer)
+The included GitHub Actions workflow runs `node scripts/sync-dblp.mjs` every 6 hours and commits changes when DBLP has new records. You can also run it manually from the Actions tab.
 
-1. Clone the repository and made updates as detailed above
-1. Make sure you have ruby-dev, bundler, and nodejs installed: `sudo apt install ruby-dev ruby-bundler nodejs`
-1. Run `bundle clean` to clean up the directory (no need to run `--force`)
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `bundle exec jekyll liveserve` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+## Publication sync workflow
 
-# Changelog -- bugfixes and enhancements
+Initialize or refresh from DBLP:
 
-There is one logistical issue with a ready-to-fork template theme like academic pages that makes it a little tricky to get bug fixes and updates to the core theme. If you fork this repository, customize it, then pull again, you'll probably get merge conflicts. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch. 
+```bash
+node scripts/sync-dblp.mjs
+```
 
-To support this, all changes to the underlying code appear as a closed issue with the tag 'code change' -- get the list [here](https://github.com/academicpages/academicpages.github.io/issues?q=is%3Aclosed%20is%3Aissue%20label%3A%22code%20change%22%20). Each issue thread includes a comment linking to the single commit or a diff across multiple commits, so those with forked repositories can easily identify what they need to patch.
+Add immediate acceptance news before DBLP has indexed the paper:
+
+```bash
+node scripts/add-news.mjs \
+  --person "Student Name" \
+  --role "first author" \
+  --title "Paper Title" \
+  --venue "ICRA 2026" \
+  --date "2026-06-13" \
+  --link "https://doi.org/..."
+```
+
+Keep custom paper links in `assets/data/publication-links.json`. The DBLP sync preserves these manual code, video, arXiv, PDF, and title overrides.
+
+## Suggested next edits
+
+- Add PDF files under `assets/papers/` and link them from `assets/data/publication-links.json`.
+- Add `assets/Zhangli_Zhou_CV.pdf` and change the CV text link into a download link.
+- Replace or reorder demo video cover images once the final YouTube list is chosen.
+- Confirm whether the exact current title should be "Postdoctoral Researcher", "Ph.D.", or another role.
+- Register a production analytics widget such as ClustrMaps, MapMyVisitors, GoatCounter, Umami, or Cloudflare Web Analytics if you want server-side aggregate page views and a real multi-visitor world map. The current static implementation shows the current visitor's IP-derived location, a local browser visit count, a lightweight counter badge, and a zoomable Leaflet/OpenStreetMap visitor map.
+
+## Visitor analytics notes
+
+GitHub Pages is static hosting, so the site cannot keep its own server-side IP logs or global visit database without an external service. The visitor panel currently uses browser-side IP geolocation with graceful fallback:
+
+- Primary IP lookup: `https://ipwho.is/`
+- Fallback IP lookup: `https://ipapi.co/json/`
+- Lightweight page counter badge: `https://profile-counter.glitch.me/`
+- Interactive map library: Leaflet 1.9.4 with OpenStreetMap tiles
+
+For a production visitor map, paste your chosen provider's embed code into the `Visitors` section in `index.html`.
+
+## Data sources used for this draft
+
+- Existing homepage: `https://ustczzl.github.io/`
+- ICR group people page: `https://ustc-icr.github.io/people.html`
+- DBLP author page: `https://dblp.org/pid/314/6823`
+- Google Scholar profile link from the old homepage: `https://scholar.google.com/citations?user=cluMJl4AAAAJ&hl=en`
+- GitHub public profile and repository names: `https://github.com/USTCzzl`
+- Academic website inspiration and visitor-map options: The Academic Designer, Rice Graduate and Postdoctoral Studies, AcademicPages visitor-map discussion, ClustrMaps tutorials, MapMyVisitors.

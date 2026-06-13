@@ -1,0 +1,72 @@
+{
+  "journals/ral/ZhouLK26": {
+    "id": "pub-dual-reactive",
+    "code": "https://github.com/USTCzzl/double_reactive"
+  },
+  "Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments": {
+    "id": "pub-dual-reactive",
+    "code": "https://github.com/USTCzzl/double_reactive"
+  },
+  "journals/tase/ZhouWCCWLK25": {
+    "id": "pub-local-observation",
+    "video": "https://www.youtube.com/watch?v=jKXuOJu1MsA"
+  },
+  "Local Observation Based Reactive Temporal Logic Planning of Human-Robot Systems": {
+    "id": "pub-local-observation",
+    "video": "https://www.youtube.com/watch?v=jKXuOJu1MsA"
+  },
+  "journals/tai/ZhouWCCK24": {
+    "id": "pub-thin-stacked",
+    "code": "https://github.com/USTCzzl/DHRNet-MP-PC",
+    "video": "https://youtu.be/biuGoTSoupU"
+  },
+  "A Novel Framework for Improved Grasping of Thin and Stacked Objects": {
+    "id": "pub-thin-stacked",
+    "code": "https://github.com/USTCzzl/DHRNet-MP-PC",
+    "video": "https://youtu.be/biuGoTSoupU"
+  },
+  "journals/tie/ZhouCCLKS24": {
+    "arxiv": "https://doi.org/10.48550/arXiv.2307.10243"
+  },
+  "Vision-Based Reactive Temporal Logic Motion Planning for Quadruped Robots in Unstructured Dynamic Environments": {
+    "arxiv": "https://doi.org/10.48550/arXiv.2307.10243"
+  },
+  "conf/icarm/QianZWLSK23": {
+    "arxiv": "https://doi.org/10.48550/arXiv.2307.10243"
+  },
+  "Vision-Based Reactive Planning and Control of Quadruped Robots in Unstructured Dynamic Environments": {
+    "arxiv": "https://doi.org/10.48550/arXiv.2307.10243"
+  },
+  "journals/robotica/WangZLLK24": {
+    "title": "Multi-modal Interaction With Transformers: Bridging Robots and Human With Natural Language"
+  },
+  "conf/iros/ChenZLK24": {
+    "title": "Soft Task Planning With Hierarchical Temporal Logic Specifications"
+  },
+  "conf/icdl/WangZZCCCLK23": {
+    "title": "What You See is What You Grasp: User-Friendly Grasping Guided by Near-eye-tracking",
+    "video": "https://www.youtube.com/watch?v=yuZ1hukYUrM",
+    "arxiv": "https://doi.org/10.48550/arXiv.2209.06122"
+  },
+  "What You See is What You Grasp: User-Friendly Grasping Guided by Near-eye-tracking": {
+    "video": "https://www.youtube.com/watch?v=yuZ1hukYUrM",
+    "arxiv": "https://doi.org/10.48550/arXiv.2209.06122"
+  },
+  "journals/corr/abs-2209-07459": {
+    "id": "pub-hrgnet",
+    "title": "A Robotic Visual Grasping Design: Rethinking Convolution Neural Network With High-Resolutions",
+    "code": "https://github.com/USTCzzl/HRG_Net",
+    "video": "https://youtu.be/Jhlsp-xzHFY"
+  },
+  "A Robotic Visual Grasping Design: Rethinking Convolution Neural Network With High-Resolutions": {
+    "id": "pub-hrgnet",
+    "code": "https://github.com/USTCzzl/HRG_Net",
+    "video": "https://youtu.be/Jhlsp-xzHFY"
+  },
+  "journals/ral/WangZK22": {
+    "arxiv": "https://arxiv.org/abs/2202.11911"
+  },
+  "When Transformer Meets Robotic Grasping: Exploits Context for Efficient Grasp Detection": {
+    "arxiv": "https://arxiv.org/abs/2202.11911"
+  }
+}

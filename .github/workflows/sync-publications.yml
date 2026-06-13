@@ -1,0 +1,30 @@
+name: Sync publications
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Sync DBLP publications
+        run: node scripts/sync-dblp.mjs
+
+      - name: Commit publication updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Sync publications from DBLP"
+          file_pattern: "index.html feed.xml assets/data/publications.json assets/data/publications.bib assets/data/news.json"

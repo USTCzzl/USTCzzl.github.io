@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zhangli Zhou | Robotics, Reactive Planning, Human-Robot Systems</title>
+    <meta name="description" content="Zhangli Zhou is a robotics researcher at the Intelligent Control and Robotics group, USTC. Research in reactive temporal logic planning, robotic grasping, and human-robot systems.">
+    <meta name="author" content="Zhangli Zhou">
+    <meta name="keywords" content="Zhangli Zhou, robotics, reactive temporal logic planning, robotic grasping, human-robot collaboration, USTC, ICR, formal methods, robot perception">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ustczzl.github.io/">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Zhangli Zhou | Robotics Researcher">
+    <meta property="og:description" content="Reactive planning, robotic grasping, and human-robot systems at USTC ICR.">
+    <meta property="og:image" content="https://ustczzl.github.io/assets/hero-local-observation.jpg">
+    <meta property="og:url" content="https://ustczzl.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zhangli Zhou | Robotics Researcher">
+    <meta name="twitter:description" content="Reactive planning, robotic grasping, and human-robot systems at USTC ICR.">
+    <meta name="twitter:image" content="https://ustczzl.github.io/assets/hero-local-observation.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Zhangli Zhou research news" href="feed.xml">
+    <link rel="preload" as="image" href="assets/hero-local-observation.jpg">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Zhangli Zhou",
+        "alternateName": "周章力",
+        "url": "https://ustczzl.github.io/",
+        "image": "https://ustczzl.github.io/assets/hero-local-observation.jpg",
+        "email": "mailto:zzl1215@mail.ustc.edu.cn",
+        "jobTitle": "Postdoctoral Researcher",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "University of Science and Technology of China"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Intelligent Control and Robotics Group"
+        },
+        "knowsAbout": [
+          "Robotics",
+          "Reactive temporal logic planning",
+          "Robotic grasping",
+          "Human-robot systems",
+          "Formal methods"
+        ],
+        "sameAs": [
+          "https://github.com/USTCzzl",
+          "https://scholar.google.com/citations?user=cluMJl4AAAAJ&hl=en",
+          "https://dblp.org/pid/314/6823",
+          "https://orcid.org/0000-0002-4995-4732",
+          "https://ustc-icr.github.io/people.html"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Zhangli Zhou home">
+          <span class="brand-mark">ZZ</span>
+          <span>Zhangli Zhou</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="site-menu">
+          <a href="#research">Research</a>
+          <a href="#news">News</a>
+          <a href="#publications">Publications</a>
+          <a href="#videos">Videos</a>
+          <a href="#projects">Projects</a>
+          <a href="#visitors">Visitors</a>
+          <a href="#cv">CV</a>
+          <a class="nav-contact" href="mailto:zzl1215@mail.ustc.edu.cn">Email</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">Robotics researcher - USTC Intelligent Control and Robotics</p>
+          <h1 id="hero-title">Zhangli Zhou</h1>
+          <p class="hero-subtitle">
+            I build robot planning and perception systems for uncertain, dynamic, and human-centered environments.
+            My work connects reactive temporal logic planning, high-resolution robotic grasping, and practical robot experiments.
+          </p>
+          <div class="hero-actions" aria-label="Important profile links">
+            <a class="primary-action" href="#publications">View papers</a>
+            <a class="secondary-action" href="#videos">Watch demos</a>
+            <a class="secondary-action" href="https://scholar.google.com/citations?user=cluMJl4AAAAJ&hl=en" rel="noopener">Google Scholar</a>
+          </div>
+          <dl class="hero-metrics" aria-label="Research profile snapshot">
+            <div>
+              <dt>19</dt>
+              <dd>DBLP-indexed works</dd>
+            </div>
+            <div>
+              <dt>2026</dt>
+              <dd>latest indexed paper</dd>
+            </div>
+            <div>
+              <dt>USTC</dt>
+              <dd>ICR group</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section intro-band" aria-label="Profile summary">
+        <div class="section-inner intro-grid">
+          <div>
+            <p class="section-kicker">Profile</p>
+            <h2>Robotics, planning, and perception with real robot evidence.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>
+              I am a postdoctoral researcher in the Intelligent Control and Robotics group at the University of Science and Technology of China.
+              My research focuses on robots that can plan, react, perceive, and collaborate under limited observation and changing task conditions.
+            </p>
+            <p>
+              The homepage is organized around what visitors usually need first: representative papers, short demo videos, reproducible code, and contact links.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section news-band" id="news" aria-labelledby="news-title">
+        <div class="section-inner">
+          <div class="section-head split-head">
+            <div>
+              <p class="section-kicker">News</p>
+              <h2 id="news-title">Latest research updates</h2>
+            </div>
+            <p class="last-updated">Updated June 2026</p>
+          </div>
+          <div class="news-layout">
+            <article class="news-feature">
+              <span class="news-date">2026</span>
+              <h3>Dual reactive planning for heterogeneous robots appears in RA-L</h3>
+              <p>
+                New work on heterogeneous robots with evolving capabilities in unknown environments is indexed by DBLP and linked with code.
+              </p>
+              <div class="inline-links">
+                <a href="https://doi.org/10.1109/LRA.2026.3693941" rel="noopener">DOI</a>
+                <a href="https://github.com/USTCzzl/double_reactive" rel="noopener">Code</a>
+              </div>
+            </article>
+            <div class="news-list" data-news-list>
+              <!-- NEWS_ITEMS_START -->
+              <article class="news-item">
+                <span>2025</span>
+                <h3>T-ASE paper on local-observation reactive temporal logic planning</h3>
+                <p>Human-robot planning under local observations, with the demo video linked from the homepage.</p>
+              </article>
+              <article class="news-item">
+                <span>2024</span>
+                <h3>Thin and stacked object grasping paper in IEEE TAI</h3>
+                <p>DHRNet plus MP-PC resources are highlighted with code and a local YouTube cover card.</p>
+              </article>
+              <article class="news-item">
+                <span>2024</span>
+                <h3>Multiple temporal-logic planning papers added</h3>
+                <p>ICRA, IROS, RA-L, TIE, and T-ASE records are searchable in the publications section.</p>
+              </article>
+              <article class="news-item is-collapsed" data-news-extra>
+                <span>2023</span>
+                <h3>Near-eye-tracking guided grasping demo linked</h3>
+                <p>The video section now uses fast local covers that open YouTube in a new tab.</p>
+              </article>
+              <article class="news-item is-collapsed" data-news-extra>
+                <span>2022</span>
+                <h3>High-resolution grasping preprint and code connected</h3>
+                <p>HRG_Net is linked from both publications and projects for easier discovery.</p>
+              </article>
+              <!-- NEWS_ITEMS_END -->
+            </div>
+          </div>
+          <button class="show-news" type="button" data-news-toggle aria-expanded="false">Show older updates</button>
+        </div>
+      </section>
+
+      <section class="section" id="research" aria-labelledby="research-title">
+        <div class="section-inner">
+          <div class="section-head">
+            <p class="section-kicker">Research</p>
+            <h2 id="research-title">Three connected research threads</h2>
+          </div>
+          <div class="research-grid">
+            <article class="research-card">
+              <p class="tag">Reactive planning</p>
+              <h3>Temporal logic planning under local observation</h3>
+              <p>
+                Planning frameworks for robots that must adapt online when observations are local, incomplete, or changing during execution.
+              </p>
+              <a href="#pub-local-observation">Representative paper</a>
+            </article>
+            <article class="research-card">
+              <p class="tag">Robotic grasping</p>
+              <h3>High-resolution perception for manipulation</h3>
+              <p>
+                Grasp detection and motion planning pipelines designed for thin, stacked, unseen, and visually challenging objects.
+              </p>
+              <a href="#pub-thin-stacked">Representative paper</a>
+            </article>
+            <article class="research-card">
+              <p class="tag">Human-robot systems</p>
+              <h3>Interfaces for natural robot interaction</h3>
+              <p>
+                Human-centered robot systems using gaze, language, and task specifications to connect user intent with executable robot behavior.
+              </p>
+              <a href="#videos">Demo videos</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section highlight-band" aria-labelledby="featured-title">
+        <div class="section-inner">
+          <div class="section-head split-head">
+            <div>
+              <p class="section-kicker">Featured work</p>
+              <h2 id="featured-title">Papers with direct demos or code</h2>
+            </div>
+            <a class="text-link" href="#publications">See all publications</a>
+          </div>
+          <div class="feature-list">
+            <article class="feature-item">
+              <div class="feature-year">2025</div>
+              <div>
+                <h3>Local Observation Based Reactive Temporal Logic Planning of Human-Robot Systems</h3>
+                <p>IEEE Transactions on Automation Science and Engineering. A local-observation planning framework for human-robot systems with real-time reactive adaptation.</p>
+                <div class="inline-links">
+                  <a href="https://doi.org/10.1109/TASE.2023.3304842" rel="noopener">DOI</a>
+                  <a href="https://www.youtube.com/watch?v=jKXuOJu1MsA" rel="noopener">Video</a>
+                </div>
+              </div>
+            </article>
+            <article class="feature-item">
+              <div class="feature-year">2024</div>
+              <div>
+                <h3>A Novel Framework for Improved Grasping of Thin and Stacked Objects</h3>
+                <p>IEEE Transactions on Artificial Intelligence. DHRNet plus MP-PC improves robotic grasping for thin and stacked objects.</p>
+                <div class="inline-links">
+                  <a href="https://doi.org/10.1109/TAI.2023.3341833" rel="noopener">DOI</a>
+                  <a href="https://github.com/USTCzzl/DHRNet-MP-PC" rel="noopener">Code</a>
+                  <a href="https://youtu.be/biuGoTSoupU" rel="noopener">Video</a>
+                </div>
+              </div>
+            </article>
+            <article class="feature-item">
+              <div class="feature-year">2026</div>
+              <div>
+                <h3>Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments</h3>
+                <p>IEEE Robotics and Automation Letters. A reactive planning direction for heterogeneous robots whose capabilities evolve in unknown environments.</p>
+                <div class="inline-links">
+                  <a href="https://doi.org/10.1109/LRA.2026.3693941" rel="noopener">DOI</a>
+                  <a href="https://github.com/USTCzzl/double_reactive" rel="noopener">Code</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="publications" aria-labelledby="publications-title">
+        <div class="section-inner">
+          <div class="section-head split-head">
+            <div>
+              <p class="section-kicker">Publications</p>
+              <h2 id="publications-title">Selected and recent papers</h2>
+            </div>
+            <div class="publication-export-links">
+              <a class="text-link" href="https://dblp.org/pid/314/6823" rel="noopener">DBLP profile</a>
+              <a class="text-link" href="assets/data/publications.bib">BibTeX</a>
+              <a class="text-link" href="assets/data/publications.json">JSON</a>
+            </div>
+          </div>
+
+          <div class="publication-tools" aria-label="Publication filters">
+            <label class="search-box">
+              <span>Search publications</span>
+              <input type="search" id="publication-search" placeholder="Search title, venue, year, or topic">
+            </label>
+            <label class="select-box">
+              <span>Year</span>
+              <select id="publication-year" data-year-filter>
+                <option value="all">All years</option>
+              </select>
+            </label>
+            <div class="filter-group" role="group" aria-label="Filter by publication type">
+              <button type="button" data-filter="all" class="is-active">All</button>
+              <button type="button" data-filter="journal">Journal</button>
+              <button type="button" data-filter="conference">Conference</button>
+              <button type="button" data-filter="preprint">Preprint</button>
+              <button type="button" data-filter="first">First-author</button>
+            </div>
+            <p class="result-count" aria-live="polite"><span data-publication-count>0</span> shown</p>
+          </div>
+
+          <div class="publication-list" data-publications>
+            <!-- PUBLICATIONS_START -->
+            <article class="publication-card" data-type="journal first" data-year="2026" data-keywords="Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments IEEE Robotics and Automation Letters Zhangli Zhou Hao Li Zhen Kan journal first author" id="pub-dual-reactive">
+              <div class="pub-meta">
+                <span>2026</span>
+                <span>Journal</span>
+                <span>First-author</span>
+              </div>
+              <h3>Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments</h3>
+              <p class="authors"><strong>Zhangli Zhou</strong>, Hao Li, Zhen Kan</p>
+              <p class="venue">IEEE Robotics and Automation Letters, 11(7):8060-8067, 2026.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/LRA.2026.3693941" rel="noopener">DOI</a>
+                <a href="https://github.com/USTCzzl/double_reactive" rel="noopener">Code</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{ZhouLK26,&#10;  title      = {Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments},&#10;  author     = {Zhangli Zhou and Hao Li and Zhen Kan},&#10;  journal    = {IEEE Robotics and Automation Letters},&#10;  year       = {2026},&#10;  volume     = {11},&#10;  number     = {7},&#10;  pages      = {8060-8067},&#10;  doi        = {10.1109/LRA.2026.3693941},&#10;  url        = {https://doi.org/10.1109/LRA.2026.3693941}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="journal" data-year="2025" data-keywords="Fast Motion Planning in Dynamic Environments With Extended Predicate-Based Temporal Logic IEEE Transactions on Automation Science and Engineering Ziyang Chen Mingyu Cai Zhangli Zhou Lin Li Zhen Kan journal" id="pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas">
+              <div class="pub-meta">
+                <span>2025</span>
+                <span>Journal</span>
+              </div>
+              <h3>Fast Motion Planning in Dynamic Environments With Extended Predicate-Based Temporal Logic</h3>
+              <p class="authors">Ziyang Chen, Mingyu Cai, <strong>Zhangli Zhou</strong>, Lin Li, Zhen Kan</p>
+              <p class="venue">IEEE Transactions on Automation Science and Engineering, 22:5293-5307, 2025.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/TASE.2024.3418409" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{ChenCZLK25,&#10;  title      = {Fast Motion Planning in Dynamic Environments With Extended Predicate-Based Temporal Logic},&#10;  author     = {Ziyang Chen and Mingyu Cai and Zhangli Zhou and Lin Li and Zhen Kan},&#10;  journal    = {IEEE Transactions on Automation Science and Engineering},&#10;  year       = {2025},&#10;  volume     = {22},&#10;  pages      = {5293-5307},&#10;  doi        = {10.1109/TASE.2024.3418409},&#10;  url        = {https://doi.org/10.1109/TASE.2024.3418409}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="journal first" data-year="2025" data-keywords="Local Observation Based Reactive Temporal Logic Planning of Human-Robot Systems IEEE Transactions on Automation Science and Engineering Zhangli Zhou Shaochen Wang Ziyang Chen Mingyu Cai Hao Wang Zhijun Li Zhen Kan journal first author" id="pub-local-observation">
+              <div class="pub-meta">
+                <span>2025</span>
+                <span>Journal</span>
+                <span>First-author</span>
+              </div>
+              <h3>Local Observation Based Reactive Temporal Logic Planning of Human-Robot Systems</h3>
+              <p class="authors"><strong>Zhangli Zhou</strong>, Shaochen Wang, Ziyang Chen, Mingyu Cai, Hao Wang, Zhijun Li, Zhen Kan</p>
+              <p class="venue">IEEE Transactions on Automation Science and Engineering, 22:643-655, 2025.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/TASE.2023.3304842" rel="noopener">DOI</a>
+                <a href="https://www.youtube.com/watch?v=jKXuOJu1MsA" rel="noopener">Video</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{ZhouWCCWLK25,&#10;  title      = {Local Observation Based Reactive Temporal Logic Planning of Human-Robot Systems},&#10;  author     = {Zhangli Zhou and Shaochen Wang and Ziyang Chen and Mingyu Cai and Hao Wang and Zhijun Li and Zhen Kan},&#10;  journal    = {IEEE Transactions on Automation Science and Engineering},&#10;  year       = {2025},&#10;  volume     = {22},&#10;  pages      = {643-655},&#10;  doi        = {10.1109/TASE.2023.3304842},&#10;  url        = {https://doi.org/10.1109/TASE.2023.3304842}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="journal first" data-year="2024" data-keywords="A Novel Framework for Improved Grasping of Thin and Stacked Objects IEEE Transactions on Artificial Intelligence Zhangli Zhou Shaochen Wang Ziyang Chen Mingyu Cai Zhen Kan journal first author" id="pub-thin-stacked">
+              <div class="pub-meta">
+                <span>2024</span>
+                <span>Journal</span>
+                <span>First-author</span>
+              </div>
+              <h3>A Novel Framework for Improved Grasping of Thin and Stacked Objects</h3>
+              <p class="authors"><strong>Zhangli Zhou</strong>, Shaochen Wang, Ziyang Chen, Mingyu Cai, Zhen Kan</p>
+              <p class="venue">IEEE Transactions on Artificial Intelligence, 5(6):3134-3145, 2024.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/TAI.2023.3341833" rel="noopener">DOI</a>
+                <a href="https://github.com/USTCzzl/DHRNet-MP-PC" rel="noopener">Code</a>
+                <a href="https://youtu.be/biuGoTSoupU" rel="noopener">Video</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{ZhouWCCK24,&#10;  title      = {A Novel Framework for Improved Grasping of Thin and Stacked Objects},&#10;  author     = {Zhangli Zhou and Shaochen Wang and Ziyang Chen and Mingyu Cai and Zhen Kan},&#10;  journal    = {IEEE Transactions on Artificial Intelligence},&#10;  year       = {2024},&#10;  volume     = {5},&#10;  number     = {6},&#10;  pages      = {3134-3145},&#10;  doi        = {10.1109/TAI.2023.3341833},&#10;  url        = {https://doi.org/10.1109/TAI.2023.3341833}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="journal" data-year="2024" data-keywords="Fast Temporal Logic Mission Planning of Multiple Robots: A Planning Decision Tree Approach IEEE Robotics and Automation Letters Ziyang Chen Zhangli Zhou Shaochen Wang Jinsong Li Zhen Kan journal" id="pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis">
+              <div class="pub-meta">
+                <span>2024</span>
+                <span>Journal</span>
+              </div>
+              <h3>Fast Temporal Logic Mission Planning of Multiple Robots: A Planning Decision Tree Approach</h3>
+              <p class="authors">Ziyang Chen, <strong>Zhangli Zhou</strong>, Shaochen Wang, Jinsong Li, Zhen Kan</p>
+              <p class="venue">IEEE Robotics and Automation Letters, 9(7):6146-6153, 2024.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/LRA.2024.3401166" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{ChenZWLK24,&#10;  title      = {Fast Temporal Logic Mission Planning of Multiple Robots: A Planning Decision Tree Approach},&#10;  author     = {Ziyang Chen and Zhangli Zhou and Shaochen Wang and Jinsong Li and Zhen Kan},&#10;  journal    = {IEEE Robotics and Automation Letters},&#10;  year       = {2024},&#10;  volume     = {9},&#10;  number     = {7},&#10;  pages      = {6146-6153},&#10;  doi        = {10.1109/LRA.2024.3401166},&#10;  url        = {https://doi.org/10.1109/LRA.2024.3401166}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="journal" data-year="2024" data-keywords="Multi-modal Interaction With Transformers: Bridging Robots and Human With Natural Language Robotica Shaochen Wang Zhangli Zhou Bin Li Zhijun Li Zhen Kan journal" id="pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with">
+              <div class="pub-meta">
+                <span>2024</span>
+                <span>Journal</span>
+              </div>
+              <h3>Multi-modal Interaction With Transformers: Bridging Robots and Human With Natural Language</h3>
+              <p class="authors">Shaochen Wang, <strong>Zhangli Zhou</strong>, Bin Li, Zhijun Li, Zhen Kan</p>
+              <p class="venue">Robotica, 42(2):415-434, 2024.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1017/s0263574723001510" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{WangZLLK24,&#10;  title      = {Multi-modal Interaction With Transformers: Bridging Robots and Human With Natural Language},&#10;  author     = {Shaochen Wang and Zhangli Zhou and Bin Li and Zhijun Li and Zhen Kan},&#10;  journal    = {Robotica},&#10;  year       = {2024},&#10;  volume     = {42},&#10;  number     = {2},&#10;  pages      = {415-434},&#10;  doi        = {10.1017/s0263574723001510},&#10;  url        = {https://doi.org/10.1017/s0263574723001510}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="journal first" data-year="2024" data-keywords="Vision-Based Reactive Temporal Logic Motion Planning for Quadruped Robots in Unstructured Dynamic Environments IEEE Transactions on Industrial Electronics Zhangli Zhou Ziyang Chen Mingyu Cai Zhijun Li Zhen Kan Chun-Yi Su journal first author" id="pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot">
+              <div class="pub-meta">
+                <span>2024</span>
+                <span>Journal</span>
+                <span>First-author</span>
+              </div>
+              <h3>Vision-Based Reactive Temporal Logic Motion Planning for Quadruped Robots in Unstructured Dynamic Environments</h3>
+              <p class="authors"><strong>Zhangli Zhou</strong>, Ziyang Chen, Mingyu Cai, Zhijun Li, Zhen Kan, Chun-Yi Su</p>
+              <p class="venue">IEEE Transactions on Industrial Electronics, 71(6):5983-5992, 2024.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/TIE.2023.3299048" rel="noopener">DOI</a>
+                <a href="https://doi.org/10.48550/arXiv.2307.10243" rel="noopener">arXiv</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{ZhouCCLKS24,&#10;  title      = {Vision-Based Reactive Temporal Logic Motion Planning for Quadruped Robots in Unstructured Dynamic Environments},&#10;  author     = {Zhangli Zhou and Ziyang Chen and Mingyu Cai and Zhijun Li and Zhen Kan and Chun-Yi Su},&#10;  journal    = {IEEE Transactions on Industrial Electronics},&#10;  year       = {2024},&#10;  volume     = {71},&#10;  number     = {6},&#10;  pages      = {5983-5992},&#10;  doi        = {10.1109/TIE.2023.3299048},&#10;  url        = {https://doi.org/10.1109/TIE.2023.3299048}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="conference" data-year="2024" data-keywords="Active Inference for Reactive Temporal Logic Motion Planning IEEE International Conference on Robotics and Automation Ziyang Chen Zhangli Zhou Lin Li Zhen Kan conference" id="pub-active-inference-for-reactive-temporal-logic-motion-planning">
+              <div class="pub-meta">
+                <span>2024</span>
+                <span>Conference</span>
+              </div>
+              <h3>Active Inference for Reactive Temporal Logic Motion Planning</h3>
+              <p class="authors">Ziyang Chen, <strong>Zhangli Zhou</strong>, Lin Li, Zhen Kan</p>
+              <p class="venue">IEEE International Conference on Robotics and Automation, 2520-2526, 2024.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/ICRA57147.2024.10611484" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@inproceedings{ChenZLK24,&#10;  title      = {Active Inference for Reactive Temporal Logic Motion Planning},&#10;  author     = {Ziyang Chen and Zhangli Zhou and Lin Li and Zhen Kan},&#10;  booktitle  = {IEEE International Conference on Robotics and Automation},&#10;  year       = {2024},&#10;  pages      = {2520-2526},&#10;  doi        = {10.1109/ICRA57147.2024.10611484},&#10;  url        = {https://doi.org/10.1109/ICRA57147.2024.10611484}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="conference" data-year="2024" data-keywords="LEEPS: Learning End-to-End Legged Perceptive Parkour Skills on Challenging Terrains IEEE/RSJ International Conference on Intelligent Robots and Systems Tangyu Qian Hao Zhang Zhangli Zhou Hao Wang Mingyu Cai Zhen Kan conference" id="pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin">
+              <div class="pub-meta">
+                <span>2024</span>
+                <span>Conference</span>
+              </div>
+              <h3>LEEPS: Learning End-to-End Legged Perceptive Parkour Skills on Challenging Terrains</h3>
+              <p class="authors">Tangyu Qian, Hao Zhang, <strong>Zhangli Zhou</strong>, Hao Wang, Mingyu Cai, Zhen Kan</p>
+              <p class="venue">IEEE/RSJ International Conference on Intelligent Robots and Systems, 12904-12909, 2024.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/IROS58592.2024.10801925" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@inproceedings{QianZZWCK24,&#10;  title      = {LEEPS: Learning End-to-End Legged Perceptive Parkour Skills on Challenging Terrains},&#10;  author     = {Tangyu Qian and Hao Zhang and Zhangli Zhou and Hao Wang and Mingyu Cai and Zhen Kan},&#10;  booktitle  = {IEEE/RSJ International Conference on Intelligent Robots and Systems},&#10;  year       = {2024},&#10;  pages      = {12904-12909},&#10;  doi        = {10.1109/IROS58592.2024.10801925},&#10;  url        = {https://doi.org/10.1109/IROS58592.2024.10801925}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="conference" data-year="2024" data-keywords="Soft Task Planning With Hierarchical Temporal Logic Specifications IEEE/RSJ International Conference on Intelligent Robots and Systems Ziyang Chen Zhangli Zhou Lin Li Zhen Kan conference" id="pub-soft-task-planning-with-hierarchical-temporal-logic-specifications">
+              <div class="pub-meta">
+                <span>2024</span>
+                <span>Conference</span>
+              </div>
+              <h3>Soft Task Planning With Hierarchical Temporal Logic Specifications</h3>
+              <p class="authors">Ziyang Chen, <strong>Zhangli Zhou</strong>, Lin Li, Zhen Kan</p>
+              <p class="venue">IEEE/RSJ International Conference on Intelligent Robots and Systems, 2299-2304, 2024.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/IROS58592.2024.10801732" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@inproceedings{ChenZLK24_2,&#10;  title      = {Soft Task Planning With Hierarchical Temporal Logic Specifications},&#10;  author     = {Ziyang Chen and Zhangli Zhou and Lin Li and Zhen Kan},&#10;  booktitle  = {IEEE/RSJ International Conference on Intelligent Robots and Systems},&#10;  year       = {2024},&#10;  pages      = {2299-2304},&#10;  doi        = {10.1109/IROS58592.2024.10801732},&#10;  url        = {https://doi.org/10.1109/IROS58592.2024.10801732}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="conference" data-year="2023" data-keywords="A Hierarchical Decoupling Approach for Fast Temporal Logic Motion Planning IEEE International Conference on Robotics and Automation Ziyang Chen Zhangli Zhou Shaochen Wang Zhen Kan conference" id="pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni">
+              <div class="pub-meta">
+                <span>2023</span>
+                <span>Conference</span>
+              </div>
+              <h3>A Hierarchical Decoupling Approach for Fast Temporal Logic Motion Planning</h3>
+              <p class="authors">Ziyang Chen, <strong>Zhangli Zhou</strong>, Shaochen Wang, Zhen Kan</p>
+              <p class="venue">IEEE International Conference on Robotics and Automation, 1579-1585, 2023.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/ICRA48891.2023.10160744" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@inproceedings{ChenZWK23,&#10;  title      = {A Hierarchical Decoupling Approach for Fast Temporal Logic Motion Planning},&#10;  author     = {Ziyang Chen and Zhangli Zhou and Shaochen Wang and Zhen Kan},&#10;  booktitle  = {IEEE International Conference on Robotics and Automation},&#10;  year       = {2023},&#10;  pages      = {1579-1585},&#10;  doi        = {10.1109/ICRA48891.2023.10160744},&#10;  url        = {https://doi.org/10.1109/ICRA48891.2023.10160744}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="conference" data-year="2023" data-keywords="Vision-Based Reactive Planning and Control of Quadruped Robots in Unstructured Dynamic Environments IEEE International Conference on Advanced Robotics and Mechatronics Tangyu Qian Zhangli Zhou Shaocheng Wang Zhijun Li Chun-Yi Su Zhen Kan conference" id="pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru">
+              <div class="pub-meta">
+                <span>2023</span>
+                <span>Conference</span>
+              </div>
+              <h3>Vision-Based Reactive Planning and Control of Quadruped Robots in Unstructured Dynamic Environments</h3>
+              <p class="authors">Tangyu Qian, <strong>Zhangli Zhou</strong>, Shaocheng Wang, Zhijun Li, Chun-Yi Su, Zhen Kan</p>
+              <p class="venue">IEEE International Conference on Advanced Robotics and Mechatronics, 745-750, 2023.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/ICARM58088.2023.10218811" rel="noopener">DOI</a>
+                <a href="https://doi.org/10.48550/arXiv.2307.10243" rel="noopener">arXiv</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@inproceedings{QianZWLSK23,&#10;  title      = {Vision-Based Reactive Planning and Control of Quadruped Robots in Unstructured Dynamic Environments},&#10;  author     = {Tangyu Qian and Zhangli Zhou and Shaocheng Wang and Zhijun Li and Chun-Yi Su and Zhen Kan},&#10;  booktitle  = {IEEE International Conference on Advanced Robotics and Mechatronics},&#10;  year       = {2023},&#10;  pages      = {745-750},&#10;  doi        = {10.1109/ICARM58088.2023.10218811},&#10;  url        = {https://doi.org/10.1109/ICARM58088.2023.10218811}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="conference" data-year="2023" data-keywords="What You See is What You Grasp: User-Friendly Grasping Guided by Near-eye-tracking IEEE International Conference on Development and Learning Shaochen Wang Wei Zhang Zhangli Zhou Jiaxi Cao Ziyang Chen Kang Chen Bin Li Zhen Kan conference" id="pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye">
+              <div class="pub-meta">
+                <span>2023</span>
+                <span>Conference</span>
+              </div>
+              <h3>What You See is What You Grasp: User-Friendly Grasping Guided by Near-eye-tracking</h3>
+              <p class="authors">Shaochen Wang, Wei Zhang, <strong>Zhangli Zhou</strong>, Jiaxi Cao, Ziyang Chen, Kang Chen, Bin Li, Zhen Kan</p>
+              <p class="venue">IEEE International Conference on Development and Learning, 194-199, 2023.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/ICDL55364.2023.10364491" rel="noopener">DOI</a>
+                <a href="https://doi.org/10.48550/arXiv.2209.06122" rel="noopener">arXiv</a>
+                <a href="https://www.youtube.com/watch?v=yuZ1hukYUrM" rel="noopener">Video</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@inproceedings{WangZZCCCLK23,&#10;  title      = {What You See is What You Grasp: User-Friendly Grasping Guided by Near-eye-tracking},&#10;  author     = {Shaochen Wang and Wei Zhang and Zhangli Zhou and Jiaxi Cao and Ziyang Chen and Kang Chen and Bin Li and Zhen Kan},&#10;  booktitle  = {IEEE International Conference on Development and Learning},&#10;  year       = {2023},&#10;  pages      = {194-199},&#10;  doi        = {10.1109/ICDL55364.2023.10364491},&#10;  url        = {https://doi.org/10.1109/ICDL55364.2023.10364491}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="journal" data-year="2022" data-keywords="When Transformer Meets Robotic Grasping: Exploits Context for Efficient Grasp Detection IEEE Robotics and Automation Letters Shaochen Wang Zhangli Zhou Zhen Kan journal" id="pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g">
+              <div class="pub-meta">
+                <span>2022</span>
+                <span>Journal</span>
+              </div>
+              <h3>When Transformer Meets Robotic Grasping: Exploits Context for Efficient Grasp Detection</h3>
+              <p class="authors">Shaochen Wang, <strong>Zhangli Zhou</strong>, Zhen Kan</p>
+              <p class="venue">IEEE Robotics and Automation Letters, 7(3):8170-8177, 2022.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/LRA.2022.3187261" rel="noopener">DOI</a>
+                <a href="https://arxiv.org/abs/2202.11911" rel="noopener">arXiv</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@article{WangZK22,&#10;  title      = {When Transformer Meets Robotic Grasping: Exploits Context for Efficient Grasp Detection},&#10;  author     = {Shaochen Wang and Zhangli Zhou and Zhen Kan},&#10;  journal    = {IEEE Robotics and Automation Letters},&#10;  year       = {2022},&#10;  volume     = {7},&#10;  number     = {3},&#10;  pages      = {8170-8177},&#10;  doi        = {10.1109/LRA.2022.3187261},&#10;  url        = {https://doi.org/10.1109/LRA.2022.3187261}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="conference" data-year="2022" data-keywords="Unsupervised Representation Learning for Visual Robotics Grasping IEEE International Conference on Advanced Robotics and Mechatronics Shaochen Wang Zhangli Zhou Hao Wang Zhijun Li Zhen Kan conference" id="pub-unsupervised-representation-learning-for-visual-robotics-grasping">
+              <div class="pub-meta">
+                <span>2022</span>
+                <span>Conference</span>
+              </div>
+              <h3>Unsupervised Representation Learning for Visual Robotics Grasping</h3>
+              <p class="authors">Shaochen Wang, <strong>Zhangli Zhou</strong>, Hao Wang, Zhijun Li, Zhen Kan</p>
+              <p class="venue">IEEE International Conference on Advanced Robotics and Mechatronics, 57-62, 2022.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.1109/ICARM54641.2022.9959267" rel="noopener">DOI</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@inproceedings{WangZWLK22,&#10;  title      = {Unsupervised Representation Learning for Visual Robotics Grasping},&#10;  author     = {Shaochen Wang and Zhangli Zhou and Hao Wang and Zhijun Li and Zhen Kan},&#10;  booktitle  = {IEEE International Conference on Advanced Robotics and Mechatronics},&#10;  year       = {2022},&#10;  pages      = {57-62},&#10;  doi        = {10.1109/ICARM54641.2022.9959267},&#10;  url        = {https://doi.org/10.1109/ICARM54641.2022.9959267}&#10;}">BibTeX</button>
+              </div>
+            </article>
+
+            <article class="publication-card" data-type="preprint first" data-year="2022" data-keywords="A Robotic Visual Grasping Design: Rethinking Convolution Neural Network With High-Resolutions CoRR Zhangli Zhou Shaochen Wang Ziyang Chen Mingyu Cai Zhen Kan preprint first author" id="pub-hrgnet">
+              <div class="pub-meta">
+                <span>2022</span>
+                <span>Preprint</span>
+                <span>First-author</span>
+              </div>
+              <h3>A Robotic Visual Grasping Design: Rethinking Convolution Neural Network With High-Resolutions</h3>
+              <p class="authors"><strong>Zhangli Zhou</strong>, Shaochen Wang, Ziyang Chen, Mingyu Cai, Zhen Kan</p>
+              <p class="venue">CoRR, abs/2209.07459, 2022.</p>
+              <div class="pub-actions">
+                <a href="https://doi.org/10.48550/arXiv.2209.07459" rel="noopener">DOI</a>
+                <a href="https://doi.org/10.48550/arXiv.2209.07459" rel="noopener">arXiv</a>
+                <a href="https://github.com/USTCzzl/HRG_Net" rel="noopener">Code</a>
+                <a href="https://youtu.be/Jhlsp-xzHFY" rel="noopener">Video</a>
+                <button class="copy-bibtex" type="button" data-bibtex="@misc{abs-2209-07459,&#10;  title      = {A Robotic Visual Grasping Design: Rethinking Convolution Neural Network With High-Resolutions},&#10;  author     = {Zhangli Zhou and Shaochen Wang and Ziyang Chen and Mingyu Cai and Zhen Kan},&#10;  journal    = {CoRR},&#10;  year       = {2022},&#10;  volume     = {abs/2209.07459},&#10;  doi        = {10.48550/arXiv.2209.07459},&#10;  url        = {https://doi.org/10.48550/arXiv.2209.07459}&#10;}">BibTeX</button>
+              </div>
+            </article>
+              <!-- PUBLICATIONS_END -->
+          </div>
+        </div>
+      </section>
+
+      <section class="section media-band" id="videos" aria-labelledby="videos-title">
+        <div class="section-inner">
+          <div class="section-head split-head">
+            <div>
+              <p class="section-kicker">Videos</p>
+              <h2 id="videos-title">Robot demos visitors can understand quickly</h2>
+            </div>
+            <a class="text-link" href="https://www.youtube.com/results?search_query=Zhangli+Zhou+robotics" rel="noopener">Search YouTube</a>
+          </div>
+          <div class="video-grid">
+            <article class="video-card">
+              <a class="video-cover" href="https://www.youtube.com/watch?v=jKXuOJu1MsA" target="_blank" rel="noopener" aria-label="Watch Local Observation Based Reactive Temporal Logic Planning of Human-Robot Systems on YouTube">
+                <img src="assets/video-local-observation.jpg" alt="Robot arm and human setup for local observation based reactive temporal logic planning" loading="lazy">
+                <span class="play-badge" aria-hidden="true"></span>
+                <span class="watch-label">Watch on YouTube</span>
+              </a>
+              <h3>Local observation based reactive temporal logic planning</h3>
+              <p>Human-robot planning under local observation and reactive execution.</p>
+            </article>
+            <article class="video-card">
+              <a class="video-cover" href="https://www.youtube.com/watch?v=Jhlsp-xzHFY" target="_blank" rel="noopener" aria-label="Watch high-resolution robotic visual grasping on YouTube">
+                <img src="assets/video-hrgnet.jpg" alt="High-resolution robotic visual grasping experiment cover" loading="lazy">
+                <span class="play-badge" aria-hidden="true"></span>
+                <span class="watch-label">Watch on YouTube</span>
+              </a>
+              <h3>High-resolution robotic visual grasping</h3>
+              <p>Physical experiments showing HRG-Net style high-resolution grasping behavior.</p>
+            </article>
+            <article class="video-card">
+              <a class="video-cover" href="https://www.youtube.com/watch?v=biuGoTSoupU" target="_blank" rel="noopener" aria-label="Watch thin and stacked object grasping on YouTube">
+                <img src="assets/video-stacked.jpg" alt="DHRNet and MP-PC stacked object grasping video cover" loading="lazy">
+                <span class="play-badge" aria-hidden="true"></span>
+                <span class="watch-label">Watch on YouTube</span>
+              </a>
+              <h3>Thin and stacked object grasping</h3>
+              <p>Stacked object grasping process connected to DHRNet plus MP-PC experiments.</p>
+            </article>
+            <article class="video-card">
+              <a class="video-cover" href="https://www.youtube.com/watch?v=yuZ1hukYUrM" target="_blank" rel="noopener" aria-label="Watch near-eye-tracking guided grasping on YouTube">
+                <img src="assets/video-eye-tracking.jpg" alt="Near-eye-tracking guided robot grasping video cover" loading="lazy">
+                <span class="play-badge" aria-hidden="true"></span>
+                <span class="watch-label">Watch on YouTube</span>
+              </a>
+              <h3>Near-eye-tracking guided grasping</h3>
+              <p>Human attention as an interface for assistive robot manipulation.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="section-inner">
+          <div class="section-head split-head">
+            <div>
+              <p class="section-kicker">Code and projects</p>
+              <h2 id="projects-title">Make the research easier to find and reuse</h2>
+            </div>
+            <a class="text-link" href="https://github.com/USTCzzl" rel="noopener">GitHub profile</a>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <h3>DHRNet-MP-PC</h3>
+              <p>Code for improved grasping of thin and stacked objects with DHRNet and multiview perception-based trajectory control.</p>
+              <a href="https://github.com/USTCzzl/DHRNet-MP-PC" rel="noopener">Open repository</a>
+            </article>
+            <article class="project-card">
+              <h3>HRG_Net</h3>
+              <p>High-resolution network for robotic grasping, connected to visual grasping with stronger spatial detail retention.</p>
+              <a href="https://github.com/USTCzzl/HRG_Net" rel="noopener">Open repository</a>
+            </article>
+            <article class="project-card">
+              <h3>double_reactive</h3>
+              <p>Repository related to dual reactive planning for heterogeneous robots in unknown environments.</p>
+              <a href="https://github.com/USTCzzl/double_reactive" rel="noopener">Open repository</a>
+            </article>
+            <article class="project-card">
+              <h3>Task-and-Motion-Planning</h3>
+              <p>Planning resources and experiments around task-and-motion planning problems.</p>
+              <a href="https://github.com/USTCzzl/Task-and-Motion-Planning" rel="noopener">Open repository</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section visitor-band" id="visitors" aria-labelledby="visitors-title">
+        <div class="section-inner">
+          <div class="section-head split-head">
+            <div>
+              <p class="section-kicker">Visitors</p>
+              <h2 id="visitors-title">Global reach and live visitor map</h2>
+            </div>
+            <p class="last-updated">IP lookup runs in the visitor's browser</p>
+          </div>
+          <div class="visitor-grid">
+            <div class="visitor-panel">
+              <div class="visitor-stat-grid">
+                <article class="visitor-stat">
+                  <span>Current IP</span>
+                  <strong data-visitor-ip>Loading</strong>
+                </article>
+                <article class="visitor-stat">
+                  <span>Estimated location</span>
+                  <strong data-visitor-location>Loading</strong>
+                </article>
+                <article class="visitor-stat">
+                  <span>This browser</span>
+                  <strong><span data-local-visits>1</span> visits</strong>
+                </article>
+                <article class="visitor-stat">
+                  <span>Live counter</span>
+                  <img class="counter-badge" src="https://profile-counter.glitch.me/ustczzl-academic-homepage/count.svg" alt="Total homepage visits counter">
+                  <strong class="counter-fallback" data-counter-fallback hidden>External counter pending</strong>
+                </article>
+              </div>
+              <p class="visitor-note" data-visitor-status>
+                Visitor location is estimated from public IP geolocation. For production-grade aggregate visitor maps, replace the counter badge with a ClustrMaps or MapMyVisitors embed after registering the site.
+              </p>
+            </div>
+            <div class="map-panel" aria-label="Interactive world visitor map">
+              <div class="leaflet-map" id="visitor-map" data-visitor-map aria-label="Zoomable interactive world map"></div>
+              <div class="map-legend">
+                <span><i class="legend-current"></i>Current visitor</span>
+                <span><i class="legend-home"></i>USTC ICR</span>
+                <span><i class="legend-network"></i>Research audience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cv-band" id="cv" aria-labelledby="cv-title">
+        <div class="section-inner cv-grid">
+          <div>
+            <p class="section-kicker">CV</p>
+            <h2 id="cv-title">Background</h2>
+            <p class="cv-note">
+              This section keeps the page self-contained. A PDF CV can be added later as <code>assets/Zhangli_Zhou_CV.pdf</code>.
+            </p>
+          </div>
+          <div class="timeline">
+            <article>
+              <span>Current</span>
+              <h3>Postdoctoral Researcher, USTC ICR</h3>
+              <p>Intelligent Control and Robotics group, University of Science and Technology of China.</p>
+            </article>
+            <article>
+              <span>2020-2024</span>
+              <h3>Ph.D., University of Science and Technology of China</h3>
+              <p>Control science and robotics research advised by Prof. Zhen Kan.</p>
+            </article>
+            <article>
+              <span>2017-2020</span>
+              <h3>M.S., University of Science and Technology of China</h3>
+              <p>Robotics and control systems.</p>
+            </article>
+            <article>
+              <span>2012-2016</span>
+              <h3>B.E., Wuhan University of Technology</h3>
+              <p>Engineering background before graduate research at USTC.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-band" id="contact" aria-labelledby="contact-title">
+        <div class="section-inner contact-grid">
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2 id="contact-title">Papers, collaborations, and demos</h2>
+            <p>
+              For collaborations, code questions, or robot demo materials, email is the fastest path. Profiles below help search engines and visitors connect the same research identity across platforms.
+            </p>
+          </div>
+          <div class="contact-links" aria-label="Profile links">
+            <a href="mailto:zzl1215@mail.ustc.edu.cn">zzl1215@mail.ustc.edu.cn</a>
+            <a href="https://scholar.google.com/citations?user=cluMJl4AAAAJ&hl=en" rel="noopener">Google Scholar</a>
+            <a href="https://dblp.org/pid/314/6823" rel="noopener">DBLP</a>
+            <a href="https://orcid.org/0000-0002-4995-4732" rel="noopener">ORCID</a>
+            <a href="https://github.com/USTCzzl" rel="noopener">GitHub</a>
+            <a href="https://ustc-icr.github.io/people.html" rel="noopener">ICR Group</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-inner footer-inner">
+        <p>© <span data-current-year></span> Zhangli Zhou. Built for GitHub Pages.</p>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+  </body>
+</html>
