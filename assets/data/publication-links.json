@@ -1,90 +1,212 @@
 {
   "journals/ral/ZhouLK26": {
     "id": "pub-dual-reactive",
-    "code": "https://github.com/USTCzzl/double_reactive",
-    "image": "assets/hero-local-observation.jpg"
+    "code": "#code-placeholder",
+    "image": "assets/publications/pub-dual-reactive.jpg",
+    "video": "#video-placeholder"
   },
   "Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments": {
     "id": "pub-dual-reactive",
-    "code": "https://github.com/USTCzzl/double_reactive",
-    "image": "assets/hero-local-observation.jpg"
+    "code": "#code-placeholder",
+    "image": "assets/publications/pub-dual-reactive.jpg",
+    "video": "#video-placeholder"
   },
   "journals/tase/ZhouWCCWLK25": {
     "id": "pub-local-observation",
-    "video": "https://www.youtube.com/watch?v=jKXuOJu1MsA",
-    "image": "assets/video-local-observation.jpg"
+    "video": "#video-placeholder",
+    "image": "assets/publications/pub-local-observation.jpg",
+    "code": "#code-placeholder"
   },
   "Local Observation Based Reactive Temporal Logic Planning of Human-Robot Systems": {
     "id": "pub-local-observation",
-    "video": "https://www.youtube.com/watch?v=jKXuOJu1MsA",
-    "image": "assets/video-local-observation.jpg"
+    "video": "#video-placeholder",
+    "image": "assets/publications/pub-local-observation.jpg",
+    "code": "#code-placeholder"
   },
   "journals/tai/ZhouWCCK24": {
     "id": "pub-thin-stacked",
-    "code": "https://github.com/USTCzzl/DHRNet-MP-PC",
-    "video": "https://youtu.be/biuGoTSoupU",
-    "image": "assets/video-stacked.jpg"
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "image": "assets/publications/pub-thin-stacked.jpg"
   },
   "A Novel Framework for Improved Grasping of Thin and Stacked Objects": {
     "id": "pub-thin-stacked",
-    "code": "https://github.com/USTCzzl/DHRNet-MP-PC",
-    "video": "https://youtu.be/biuGoTSoupU",
-    "image": "assets/video-stacked.jpg"
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "image": "assets/publications/pub-thin-stacked.jpg"
   },
   "journals/tie/ZhouCCLKS24": {
     "arxiv": "https://doi.org/10.48550/arXiv.2307.10243",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot.jpg",
+    "id": "pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   },
   "Vision-Based Reactive Temporal Logic Motion Planning for Quadruped Robots in Unstructured Dynamic Environments": {
     "arxiv": "https://doi.org/10.48550/arXiv.2307.10243",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot.jpg",
+    "id": "pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   },
   "conf/icarm/QianZWLSK23": {
     "arxiv": "https://doi.org/10.48550/arXiv.2307.10243",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru.jpg",
+    "id": "pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   },
   "Vision-Based Reactive Planning and Control of Quadruped Robots in Unstructured Dynamic Environments": {
     "arxiv": "https://doi.org/10.48550/arXiv.2307.10243",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru.jpg",
+    "id": "pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   },
   "journals/robotica/WangZLLK24": {
     "title": "Multi-modal Interaction With Transformers: Bridging Robots and Human With Natural Language",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with.jpg",
+    "id": "pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   },
   "conf/iros/ChenZLK24": {
     "title": "Soft Task Planning With Hierarchical Temporal Logic Specifications",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-soft-task-planning-with-hierarchical-temporal-logic-specifications.jpg",
+    "id": "pub-soft-task-planning-with-hierarchical-temporal-logic-specifications",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   },
   "conf/icdl/WangZZCCCLK23": {
     "title": "What You See is What You Grasp: User-Friendly Grasping Guided by Near-eye-tracking",
-    "video": "https://www.youtube.com/watch?v=yuZ1hukYUrM",
+    "video": "#video-placeholder",
     "arxiv": "https://doi.org/10.48550/arXiv.2209.06122",
-    "image": "assets/video-eye-tracking.jpg"
+    "image": "assets/publications/pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye.jpg",
+    "id": "pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye",
+    "code": "#code-placeholder"
   },
   "What You See is What You Grasp: User-Friendly Grasping Guided by Near-eye-tracking": {
-    "video": "https://www.youtube.com/watch?v=yuZ1hukYUrM",
+    "video": "#video-placeholder",
     "arxiv": "https://doi.org/10.48550/arXiv.2209.06122",
-    "image": "assets/video-eye-tracking.jpg"
+    "image": "assets/publications/pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye.jpg",
+    "id": "pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye",
+    "code": "#code-placeholder"
   },
   "journals/corr/abs-2209-07459": {
     "id": "pub-hrgnet",
     "title": "A Robotic Visual Grasping Design: Rethinking Convolution Neural Network With High-Resolutions",
-    "code": "https://github.com/USTCzzl/HRG_Net",
-    "video": "https://youtu.be/Jhlsp-xzHFY",
-    "image": "assets/video-hrgnet.jpg"
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "image": "assets/publications/pub-hrgnet.jpg"
   },
   "A Robotic Visual Grasping Design: Rethinking Convolution Neural Network With High-Resolutions": {
     "id": "pub-hrgnet",
-    "code": "https://github.com/USTCzzl/HRG_Net",
-    "video": "https://youtu.be/Jhlsp-xzHFY",
-    "image": "assets/video-hrgnet.jpg"
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "image": "assets/publications/pub-hrgnet.jpg"
   },
   "journals/ral/WangZK22": {
     "arxiv": "https://arxiv.org/abs/2202.11911",
-    "image": "assets/video-hrgnet.jpg"
+    "image": "assets/publications/pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g.jpg",
+    "id": "pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   },
   "When Transformer Meets Robotic Grasping: Exploits Context for Efficient Grasp Detection": {
     "arxiv": "https://arxiv.org/abs/2202.11911",
-    "image": "assets/video-hrgnet.jpg"
+    "image": "assets/publications/pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g.jpg",
+    "id": "pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "journals/tase/ChenCZLK25": {
+    "id": "pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas",
+    "image": "assets/publications/pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "title": "Fast Motion Planning in Dynamic Environments With Extended Predicate-Based Temporal Logic"
+  },
+  "Fast Motion Planning in Dynamic Environments With Extended Predicate-Based Temporal Logic": {
+    "id": "pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas",
+    "image": "assets/publications/pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "journals/ral/ChenZWLK24": {
+    "id": "pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis",
+    "image": "assets/publications/pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "title": "Fast Temporal Logic Mission Planning of Multiple Robots: A Planning Decision Tree Approach"
+  },
+  "Fast Temporal Logic Mission Planning of Multiple Robots: A Planning Decision Tree Approach": {
+    "id": "pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis",
+    "image": "assets/publications/pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "Multi-modal Interaction With Transformers: Bridging Robots and Human With Natural Language": {
+    "id": "pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with",
+    "image": "assets/publications/pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "conf/icra/ChenZLK24": {
+    "id": "pub-active-inference-for-reactive-temporal-logic-motion-planning",
+    "image": "assets/publications/pub-active-inference-for-reactive-temporal-logic-motion-planning.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "title": "Active Inference for Reactive Temporal Logic Motion Planning"
+  },
+  "Active Inference for Reactive Temporal Logic Motion Planning": {
+    "id": "pub-active-inference-for-reactive-temporal-logic-motion-planning",
+    "image": "assets/publications/pub-active-inference-for-reactive-temporal-logic-motion-planning.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "conf/iros/QianZZWCK24": {
+    "id": "pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin",
+    "image": "assets/publications/pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "title": "LEEPS: Learning End-to-End Legged Perceptive Parkour Skills on Challenging Terrains"
+  },
+  "LEEPS: Learning End-to-End Legged Perceptive Parkour Skills on Challenging Terrains": {
+    "id": "pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin",
+    "image": "assets/publications/pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "Soft Task Planning With Hierarchical Temporal Logic Specifications": {
+    "id": "pub-soft-task-planning-with-hierarchical-temporal-logic-specifications",
+    "image": "assets/publications/pub-soft-task-planning-with-hierarchical-temporal-logic-specifications.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "conf/icra/ChenZWK23": {
+    "id": "pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni",
+    "image": "assets/publications/pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "title": "A Hierarchical Decoupling Approach for Fast Temporal Logic Motion Planning"
+  },
+  "A Hierarchical Decoupling Approach for Fast Temporal Logic Motion Planning": {
+    "id": "pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni",
+    "image": "assets/publications/pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
+  },
+  "conf/icarm/WangZWLK22": {
+    "id": "pub-unsupervised-representation-learning-for-visual-robotics-grasping",
+    "image": "assets/publications/pub-unsupervised-representation-learning-for-visual-robotics-grasping.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
+    "title": "Unsupervised Representation Learning for Visual Robotics Grasping"
+  },
+  "Unsupervised Representation Learning for Visual Robotics Grasping": {
+    "id": "pub-unsupervised-representation-learning-for-visual-robotics-grasping",
+    "image": "assets/publications/pub-unsupervised-representation-learning-for-visual-robotics-grasping.jpg",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder"
   }
 }

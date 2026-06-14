@@ -21,11 +21,11 @@
     "dblpUrl": "https://dblp.org/rec/journals/ral/ZhouLK26",
     "firstAuthor": true,
     "id": "pub-dual-reactive",
-    "code": "https://github.com/USTCzzl/double_reactive",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "citationKey": "ZhouLK26",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-dual-reactive.jpg"
   },
   {
     "key": "journals/tase/ChenCZLK25",
@@ -50,12 +50,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/journals/tase/ChenCZLK25",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas",
     "citationKey": "ChenCZLK25",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas.jpg"
   },
   {
     "key": "journals/tase/ZhouWCCWLK25",
@@ -83,11 +83,11 @@
     "dblpUrl": "https://dblp.org/rec/journals/tase/ZhouWCCWLK25",
     "firstAuthor": true,
     "id": "pub-local-observation",
-    "video": "https://www.youtube.com/watch?v=jKXuOJu1MsA",
-    "code": "",
+    "video": "#video-placeholder",
+    "code": "#code-placeholder",
     "pdf": "",
     "citationKey": "ZhouWCCWLK25",
-    "image": "assets/video-local-observation.jpg"
+    "image": "assets/publications/pub-local-observation.jpg"
   },
   {
     "key": "journals/tai/ZhouWCCK24",
@@ -113,11 +113,11 @@
     "dblpUrl": "https://dblp.org/rec/journals/tai/ZhouWCCK24",
     "firstAuthor": true,
     "id": "pub-thin-stacked",
-    "code": "https://github.com/USTCzzl/DHRNet-MP-PC",
-    "video": "https://youtu.be/biuGoTSoupU",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "citationKey": "ZhouWCCK24",
-    "image": "assets/video-stacked.jpg"
+    "image": "assets/publications/pub-thin-stacked.jpg"
   },
   {
     "key": "journals/ral/ChenZWLK24",
@@ -142,12 +142,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/journals/ral/ChenZWLK24",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis",
     "citationKey": "ChenZWLK24",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis.jpg"
   },
   {
     "key": "journals/robotica/WangZLLK24",
@@ -172,12 +172,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/journals/robotica/WangZLLK24",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with",
     "citationKey": "WangZLLK24",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with.jpg"
   },
   {
     "key": "journals/tie/ZhouCCLKS24",
@@ -203,12 +203,12 @@
     "arxiv": "https://doi.org/10.48550/arXiv.2307.10243",
     "dblpUrl": "https://dblp.org/rec/journals/tie/ZhouCCLKS24",
     "firstAuthor": true,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot",
     "citationKey": "ZhouCCLKS24",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot.jpg"
   },
   {
     "key": "conf/icra/ChenZLK24",
@@ -232,12 +232,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/conf/icra/ChenZLK24",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-active-inference-for-reactive-temporal-logic-motion-planning",
     "citationKey": "ChenZLK24",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-active-inference-for-reactive-temporal-logic-motion-planning.jpg"
   },
   {
     "key": "conf/iros/QianZZWCK24",
@@ -263,12 +263,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/conf/iros/QianZZWCK24",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin",
     "citationKey": "QianZZWCK24",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin.jpg"
   },
   {
     "key": "conf/iros/ChenZLK24",
@@ -292,12 +292,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/conf/iros/ChenZLK24",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-soft-task-planning-with-hierarchical-temporal-logic-specifications",
     "citationKey": "ChenZLK24_2",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-soft-task-planning-with-hierarchical-temporal-logic-specifications.jpg"
   },
   {
     "key": "conf/icra/ChenZWK23",
@@ -321,12 +321,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/conf/icra/ChenZWK23",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni",
     "citationKey": "ChenZWK23",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni.jpg"
   },
   {
     "key": "conf/icarm/QianZWLSK23",
@@ -352,12 +352,12 @@
     "arxiv": "https://doi.org/10.48550/arXiv.2307.10243",
     "dblpUrl": "https://dblp.org/rec/conf/icarm/QianZWLSK23",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru",
     "citationKey": "QianZWLSK23",
-    "image": "assets/hero-local-observation.jpg"
+    "image": "assets/publications/pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru.jpg"
   },
   {
     "key": "conf/icdl/WangZZCCCLK23",
@@ -385,12 +385,12 @@
     "arxiv": "https://doi.org/10.48550/arXiv.2209.06122",
     "dblpUrl": "https://dblp.org/rec/conf/icdl/WangZZCCCLK23",
     "firstAuthor": false,
-    "video": "https://www.youtube.com/watch?v=yuZ1hukYUrM",
-    "code": "",
+    "video": "#video-placeholder",
+    "code": "#code-placeholder",
     "pdf": "",
     "id": "pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye",
     "citationKey": "WangZZCCCLK23",
-    "image": "assets/video-eye-tracking.jpg"
+    "image": "assets/publications/pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye.jpg"
   },
   {
     "key": "journals/ral/WangZK22",
@@ -413,12 +413,12 @@
     "arxiv": "https://arxiv.org/abs/2202.11911",
     "dblpUrl": "https://dblp.org/rec/journals/ral/WangZK22",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g",
     "citationKey": "WangZK22",
-    "image": "assets/video-hrgnet.jpg"
+    "image": "assets/publications/pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g.jpg"
   },
   {
     "key": "conf/icarm/WangZWLK22",
@@ -443,12 +443,12 @@
     "arxiv": "",
     "dblpUrl": "https://dblp.org/rec/conf/icarm/WangZWLK22",
     "firstAuthor": false,
-    "code": "",
-    "video": "",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "id": "pub-unsupervised-representation-learning-for-visual-robotics-grasping",
     "citationKey": "WangZWLK22",
-    "image": "assets/video-stacked.jpg"
+    "image": "assets/publications/pub-unsupervised-representation-learning-for-visual-robotics-grasping.jpg"
   },
   {
     "key": "journals/corr/abs-2209-07459",
@@ -474,10 +474,10 @@
     "dblpUrl": "https://dblp.org/rec/journals/corr/abs-2209-07459",
     "firstAuthor": true,
     "id": "pub-hrgnet",
-    "code": "https://github.com/USTCzzl/HRG_Net",
-    "video": "https://youtu.be/Jhlsp-xzHFY",
+    "code": "#code-placeholder",
+    "video": "#video-placeholder",
     "pdf": "",
     "citationKey": "abs-2209-07459",
-    "image": "assets/video-hrgnet.jpg"
+    "image": "assets/publications/pub-hrgnet.jpg"
   }
 ]

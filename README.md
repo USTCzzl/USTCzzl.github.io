@@ -53,7 +53,7 @@ Keep custom paper links in `assets/data/publication-links.json`. The DBLP sync p
 - Add PDF files under `assets/papers/` and link them from `assets/data/publication-links.json`.
 - Add `assets/Zhangli_Zhou_CV.pdf` and change the CV text link into a download link.
 - Replace or reorder demo video cover images once the final YouTube list is chosen.
-- Confirm whether the exact current title should be "Postdoctoral Researcher", "Ph.D.", or another role.
+- Keep the appointment title current if the homepage role changes again.
 - Register a production analytics widget such as ClustrMaps, MapMyVisitors, GoatCounter, Umami, or Cloudflare Web Analytics if you want server-side aggregate page views and a real multi-visitor world map. The current static implementation shows the current visitor's IP-derived location, a local browser visit count, a lightweight counter badge, and a zoomable Leaflet/OpenStreetMap visitor map.
 
 ## Visitor analytics notes
