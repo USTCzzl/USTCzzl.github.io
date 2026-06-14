@@ -152,20 +152,6 @@ document.querySelectorAll("[data-bibtex]").forEach((button) => {
   });
 });
 
-const newsToggle = document.querySelector("[data-news-toggle]");
-const extraNewsItems = Array.from(document.querySelectorAll("[data-news-extra]"));
-
-if (newsToggle && extraNewsItems.length) {
-  newsToggle.addEventListener("click", () => {
-    const expanded = newsToggle.getAttribute("aria-expanded") === "true";
-    extraNewsItems.forEach((item) => {
-      item.classList.toggle("is-collapsed", expanded);
-    });
-    newsToggle.setAttribute("aria-expanded", String(!expanded));
-    newsToggle.textContent = expanded ? "Show older updates" : "Hide older updates";
-  });
-}
-
 function setText(selector, value) {
   const target = document.querySelector(selector);
   if (target) {

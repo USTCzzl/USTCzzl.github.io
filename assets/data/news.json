@@ -2,8 +2,8 @@
   {
     "id": "news-2026-ral-dual-reactive",
     "date": "2026",
-    "title": "Dual reactive planning for heterogeneous robots appears in RA-L",
-    "summary": "New work on heterogeneous robots with evolving capabilities in unknown environments is indexed by DBLP and linked with code.",
+    "title": "Congratulations to Zhangli Zhou (first author) on having the paper \"Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments\" accepted by IEEE Robotics and Automation Letters (RA-L).",
+    "summary": "Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments has been accepted by IEEE Robotics and Automation Letters (RA-L).",
     "links": [
       {
         "label": "DOI",
@@ -14,35 +14,5 @@
         "url": "https://github.com/USTCzzl/double_reactive"
       }
     ]
-  },
-  {
-    "id": "news-2025-tase-local-observation",
-    "date": "2025",
-    "title": "T-ASE paper on local-observation reactive temporal logic planning",
-    "summary": "Human-robot planning under local observations, with the demo video linked from the homepage."
-  },
-  {
-    "id": "news-2024-tai-thin-stacked",
-    "date": "2024",
-    "title": "Thin and stacked object grasping paper in IEEE TAI",
-    "summary": "DHRNet plus MP-PC resources are highlighted with code and a local YouTube cover card."
-  },
-  {
-    "id": "news-2024-planning-papers",
-    "date": "2024",
-    "title": "Multiple temporal-logic planning papers added",
-    "summary": "ICRA, IROS, RA-L, TIE, and T-ASE records are searchable in the publications section."
-  },
-  {
-    "id": "news-2023-eye-tracking-video",
-    "date": "2023",
-    "title": "Near-eye-tracking guided grasping demo linked",
-    "summary": "The video section now uses fast local covers that open YouTube in a new tab."
-  },
-  {
-    "id": "news-2022-hrgnet-code",
-    "date": "2022",
-    "title": "High-resolution grasping preprint and code connected",
-    "summary": "HRG_Net is linked from both publications and projects for easier discovery."
   }
 ]

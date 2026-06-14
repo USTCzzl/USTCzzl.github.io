@@ -251,6 +251,7 @@ function parsePublicationsFromHtml(html) {
     const authorsText = cleanText((block.match(/<p class="authors">([\s\S]*?)<\/p>/i) || [])[1] || "");
     const authors = authorsText.split(/\s*,\s*/).map(cleanAuthorName).filter(Boolean);
     const venueText = cleanText((block.match(/<p class="venue">([\s\S]*?)<\/p>/i) || [])[1] || "");
+    const image = ((block.match(/<img[^>]+src="([^"]+)"/i) || [])[1] || "").trim();
     const year = Number.parseInt(attrs["data-year"], 10) || Number.parseInt(venueText.match(/\b(20\d{2}|19\d{2})\b/)?.[1], 10);
     const dataType = attrs["data-type"] || "";
     const type = dataType.includes("conference") ? "conference" : dataType.includes("preprint") ? "preprint" : "journal";
@@ -281,6 +282,7 @@ function parsePublicationsFromHtml(html) {
       code: links.code || "",
       video: links.video || "",
       pdf: links.pdf || "",
+      image,
       keywords: attrs["data-keywords"] || "",
       firstAuthor: dataType.includes("first") || authors[0] === OWNER_NAME
     });
@@ -317,6 +319,7 @@ function mergeExtras(publications, extrasByKey) {
       code: extras.code || publication.code || "",
       video: extras.video || publication.video || "",
       pdf: extras.pdf || publication.pdf || "",
+      image: extras.image || publication.image || "",
       id: extras.id || publication.id || `pub-${slugify(publication.title)}`
     };
   });
@@ -397,6 +400,21 @@ function keywordsFor(publication) {
   );
 }
 
+function publicationImage(publication) {
+  if (publication.image) {
+    return publication.image;
+  }
+
+  const title = normalizeTitle(publication.title);
+  if (title.includes("eye")) {
+    return "assets/video-eye-tracking.jpg";
+  }
+  if (title.includes("grasp") || title.includes("stacked") || title.includes("transformer")) {
+    return "assets/video-stacked.jpg";
+  }
+  return "assets/hero-local-observation.jpg";
+}
+
 function renderPublicationActions(publication, bibtex) {
   const links = [];
   if (publication.doiUrl) {
@@ -429,16 +447,23 @@ function renderPublicationCard(publication) {
     .map((author) => author === OWNER_NAME ? `<strong>${escapeHtml(author)}</strong>` : escapeHtml(author))
     .join(", ");
   const bibtex = toBibTeX(publication);
+  const image = publicationImage(publication);
+  const imageTarget = publication.doiUrl || publication.arxiv || publication.video || publication.code || `#${publication.id}`;
 
   return `            <article class="publication-card" data-type="${escapeAttribute(typeTokens)}" data-year="${escapeAttribute(publication.year)}" data-keywords="${escapeAttribute(keywordsFor(publication))}" id="${escapeAttribute(publication.id)}">
-              <div class="pub-meta">
-                ${meta}
-              </div>
-              <h3>${escapeHtml(publication.title)}</h3>
-              <p class="authors">${authors}</p>
-              <p class="venue">${escapeHtml(formatVenue(publication))}</p>
-              <div class="pub-actions">
-                ${renderPublicationActions(publication, bibtex)}
+              <a class="pub-thumb" href="${escapeAttribute(imageTarget)}" rel="noopener" aria-label="${escapeAttribute(`Open ${publication.title}`)}">
+                <img src="${escapeAttribute(image)}" alt="${escapeAttribute(`${publication.title} visual summary`)}" loading="lazy">
+              </a>
+              <div class="pub-body">
+                <div class="pub-meta">
+                  ${meta}
+                </div>
+                <h3>${escapeHtml(publication.title)}</h3>
+                <p class="authors">${authors}</p>
+                <p class="venue">${escapeHtml(formatVenue(publication))}</p>
+                <div class="pub-actions">
+                  ${renderPublicationActions(publication, bibtex)}
+                </div>
               </div>
             </article>`;
 }
@@ -472,33 +497,14 @@ function toBibTeX(publication) {
   return `@${bibType(publication.type)}{${publication.citationKey},\n${fields.join(",\n")}\n}`;
 }
 
-function renderNewsLinks(links = []) {
-  if (!links.length) {
-    return "";
-  }
-  return `\n              <div class="inline-links">\n                ${links.map((link) => `<a href="${escapeAttribute(link.url)}" rel="noopener">${escapeHtml(link.label)}</a>`).join("\n                ")}\n              </div>`;
-}
-
 function renderFeaturedNews(item) {
-  return `            <article class="news-feature">
-              <span class="news-date">${escapeHtml(item.date)}</span>
-              <h3>${escapeHtml(item.title)}</h3>
-              <p>
-                ${escapeHtml(item.summary)}
-              </p>${renderNewsLinks(item.links)}
-            </article>`;
+  return `            <li><time datetime="${escapeAttribute(item.date)}">${escapeHtml(item.date)}</time> ${escapeHtml(item.title)}</li>`;
 }
 
-function renderNewsList(news) {
-  return news.map((item, index) => {
-    const collapsed = index >= 3 ? " is-collapsed" : "";
-    const extra = index >= 3 ? " data-news-extra" : "";
-    return `              <article class="news-item${collapsed}"${extra}>
-                <span>${escapeHtml(item.date)}</span>
-                <h3>${escapeHtml(item.title)}</h3>
-                <p>${escapeHtml(item.summary)}</p>
-              </article>`;
-  }).join("\n");
+function renderNewsLayout(item) {
+  return `          <ul class="news-list" aria-label="Latest research news">
+${renderFeaturedNews(item)}
+          </ul>`;
 }
 
 function replaceBetween(html, startMarker, endMarker, replacement) {
@@ -508,6 +514,20 @@ function replaceBetween(html, startMarker, endMarker, replacement) {
     throw new Error(`Could not find markers ${startMarker} and ${endMarker}`);
   }
   return `${html.slice(0, startIndex + startMarker.length)}\n${replacement}\n              ${html.slice(endIndex)}`;
+}
+
+function replaceNewsLayout(html, item) {
+  const legacyPattern = /          <div class="news-layout">[\s\S]*?          <button class="show-news"[\s\S]*?<\/button>/;
+  if (legacyPattern.test(html)) {
+    return html.replace(legacyPattern, renderNewsLayout(item));
+  }
+
+  const cardPattern = /          <div class="news-layout">[\s\S]*?          <\/div>/;
+  if (cardPattern.test(html)) {
+    return html.replace(cardPattern, renderNewsLayout(item));
+  }
+
+  return html.replace(/          <ul class="news-list"[\s\S]*?          <\/ul>/, renderNewsLayout(item));
 }
 
 function dateToRss(dateValue) {
@@ -549,8 +569,8 @@ function publicationNews(publication) {
   const venue = publication.venue || "a new venue";
   const ownerIsFirst = firstAuthor === OWNER_NAME;
   const title = ownerIsFirst
-    ? `Congratulations to ${OWNER_NAME} (first author) on the acceptance/publication of "${publication.title}" in ${venue}`
-    : `Congratulations to ${firstAuthor} and collaborators on the acceptance/publication of "${publication.title}" in ${venue}`;
+    ? `Congratulations to ${OWNER_NAME} (first author) on having the paper "${publication.title}" accepted by ${venue}.`
+    : `Congratulations to ${firstAuthor} and collaborators on having the paper "${publication.title}" accepted by ${venue}.`;
   const links = [
     publication.doiUrl ? { label: "DOI", url: publication.doiUrl } : null,
     publication.code ? { label: "Code", url: publication.code } : null,
@@ -561,7 +581,7 @@ function publicationNews(publication) {
     id: `news-${new Date().toISOString().slice(0, 10)}-${slugify(publication.title)}`,
     date: new Date().toISOString().slice(0, 10),
     title,
-    summary: `The new ${typeLabel(publication.type).toLowerCase()} paper has been added automatically from DBLP and is now listed in the publications section.`,
+    summary: `${publication.title} has been accepted by ${venue}.`,
     links
   };
 }
@@ -656,13 +676,7 @@ async function main() {
   );
 
   if (news.length) {
-    nextHtml = nextHtml.replace(/            <article class="news-feature">[\s\S]*?<\/article>/, renderFeaturedNews(news[0]));
-    nextHtml = replaceBetween(
-      nextHtml,
-      "<!-- NEWS_ITEMS_START -->",
-      "<!-- NEWS_ITEMS_END -->",
-      renderNewsList(news.slice(1))
-    );
+    nextHtml = replaceNewsLayout(nextHtml, news[0]);
   }
 
   await Promise.all([

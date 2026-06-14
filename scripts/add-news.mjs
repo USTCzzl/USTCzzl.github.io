@@ -62,7 +62,7 @@ async function main() {
   const item = {
     id: `news-${date}-${slugify(`${person}-${paperTitle}`)}`,
     date,
-    title: `Congratulations to ${person} (${role}) on the acceptance of "${paperTitle}" by ${venue}`,
+    title: `Congratulations to ${person} (${role}) on having the paper "${paperTitle}" accepted by ${venue}.`,
     summary: args.summary || `${paperTitle} has been accepted by ${venue}.`,
     links: link ? [{ label: args["link-label"] || "Paper", url: link }] : []
   };

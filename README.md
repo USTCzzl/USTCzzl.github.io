@@ -46,7 +46,7 @@ node scripts/add-news.mjs \
   --link "https://doi.org/..."
 ```
 
-Keep custom paper links in `assets/data/publication-links.json`. The DBLP sync preserves these manual code, video, arXiv, PDF, and title overrides.
+Keep custom paper links in `assets/data/publication-links.json`. The DBLP sync preserves these manual code, video, arXiv, PDF, image, and title overrides.
 
 ## Suggested next edits
 

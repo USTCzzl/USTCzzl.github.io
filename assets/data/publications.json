@@ -24,7 +24,8 @@
     "code": "https://github.com/USTCzzl/double_reactive",
     "video": "",
     "pdf": "",
-    "citationKey": "ZhouLK26"
+    "citationKey": "ZhouLK26",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "journals/tase/ChenCZLK25",
@@ -53,7 +54,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas",
-    "citationKey": "ChenCZLK25"
+    "citationKey": "ChenCZLK25",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "journals/tase/ZhouWCCWLK25",
@@ -84,7 +86,8 @@
     "video": "https://www.youtube.com/watch?v=jKXuOJu1MsA",
     "code": "",
     "pdf": "",
-    "citationKey": "ZhouWCCWLK25"
+    "citationKey": "ZhouWCCWLK25",
+    "image": "assets/video-local-observation.jpg"
   },
   {
     "key": "journals/tai/ZhouWCCK24",
@@ -113,7 +116,8 @@
     "code": "https://github.com/USTCzzl/DHRNet-MP-PC",
     "video": "https://youtu.be/biuGoTSoupU",
     "pdf": "",
-    "citationKey": "ZhouWCCK24"
+    "citationKey": "ZhouWCCK24",
+    "image": "assets/video-stacked.jpg"
   },
   {
     "key": "journals/ral/ChenZWLK24",
@@ -142,7 +146,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis",
-    "citationKey": "ChenZWLK24"
+    "citationKey": "ChenZWLK24",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "journals/robotica/WangZLLK24",
@@ -171,7 +176,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with",
-    "citationKey": "WangZLLK24"
+    "citationKey": "WangZLLK24",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "journals/tie/ZhouCCLKS24",
@@ -201,7 +207,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot",
-    "citationKey": "ZhouCCLKS24"
+    "citationKey": "ZhouCCLKS24",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "conf/icra/ChenZLK24",
@@ -229,7 +236,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-active-inference-for-reactive-temporal-logic-motion-planning",
-    "citationKey": "ChenZLK24"
+    "citationKey": "ChenZLK24",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "conf/iros/QianZZWCK24",
@@ -259,7 +267,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin",
-    "citationKey": "QianZZWCK24"
+    "citationKey": "QianZZWCK24",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "conf/iros/ChenZLK24",
@@ -287,7 +296,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-soft-task-planning-with-hierarchical-temporal-logic-specifications",
-    "citationKey": "ChenZLK24_2"
+    "citationKey": "ChenZLK24_2",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "conf/icra/ChenZWK23",
@@ -315,7 +325,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni",
-    "citationKey": "ChenZWK23"
+    "citationKey": "ChenZWK23",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "conf/icarm/QianZWLSK23",
@@ -345,7 +356,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru",
-    "citationKey": "QianZWLSK23"
+    "citationKey": "QianZWLSK23",
+    "image": "assets/hero-local-observation.jpg"
   },
   {
     "key": "conf/icdl/WangZZCCCLK23",
@@ -377,7 +389,8 @@
     "code": "",
     "pdf": "",
     "id": "pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye",
-    "citationKey": "WangZZCCCLK23"
+    "citationKey": "WangZZCCCLK23",
+    "image": "assets/video-eye-tracking.jpg"
   },
   {
     "key": "journals/ral/WangZK22",
@@ -404,7 +417,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g",
-    "citationKey": "WangZK22"
+    "citationKey": "WangZK22",
+    "image": "assets/video-hrgnet.jpg"
   },
   {
     "key": "conf/icarm/WangZWLK22",
@@ -433,7 +447,8 @@
     "video": "",
     "pdf": "",
     "id": "pub-unsupervised-representation-learning-for-visual-robotics-grasping",
-    "citationKey": "WangZWLK22"
+    "citationKey": "WangZWLK22",
+    "image": "assets/video-stacked.jpg"
   },
   {
     "key": "journals/corr/abs-2209-07459",
@@ -462,6 +477,7 @@
     "code": "https://github.com/USTCzzl/HRG_Net",
     "video": "https://youtu.be/Jhlsp-xzHFY",
     "pdf": "",
-    "citationKey": "abs-2209-07459"
+    "citationKey": "abs-2209-07459",
+    "image": "assets/video-hrgnet.jpg"
   }
 ]
