@@ -1,0 +1,21 @@
+{
+  "githubUsername": "USTCzzl",
+  "featuredRepositories": [
+    {
+      "name": "DHRNet-MP-PC",
+      "fallbackDescription": "Code for improved grasping of thin and stacked objects with DHRNet and multiview perception-based trajectory control."
+    },
+    {
+      "name": "HRG_Net",
+      "fallbackDescription": "High-resolution network for robotic grasping with stronger spatial detail retention."
+    },
+    {
+      "name": "double_reactive",
+      "fallbackDescription": "Repository related to dual reactive planning for heterogeneous robots in unknown environments."
+    },
+    {
+      "name": "Task-and-Motion-Planning",
+      "fallbackDescription": "Planning resources and experiments around task-and-motion planning problems."
+    }
+  ]
+}

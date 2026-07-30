@@ -27,10 +27,10 @@
     "image": "assets/publications/pub-from-ambiguous-language-to-verifiable-plans.jpg",
     "imageAlt": "Figure 1 from From Ambiguous Language to Verifiable Plans, showing specification-preserving runtime object substitution",
     "imageSource": "Figure 1 of the final manuscript",
+    "citationKey": "tro20263718074",
     "code": "",
     "video": "",
-    "pdf": "",
-    "citationKey": "tro20263718074"
+    "pdf": ""
   },
   {
     "key": "journals/ral/ZhouLK26",
@@ -57,11 +57,11 @@
     "code": "#code-placeholder",
     "image": "assets/publications/pub-dual-reactive.jpg",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "ZhouLK26",
     "imageAlt": "Figure 5 from Dual Reactive Planning, showing the Gazebo rescue mission execution sequence",
     "imageSource": "Figure 5 of the paper",
-    "publishedDate": "2026-07-01"
+    "publishedDate": "2026-07-01",
+    "pdf": ""
   },
   {
     "key": "doi:10.1109/tnnls.2026.3698967",
@@ -85,12 +85,12 @@
     "arxiv": "",
     "dblpUrl": "",
     "firstAuthor": false,
+    "id": "pub-temporal-logic-guided-universal-task-representations-for-reinforcement-l",
+    "citationKey": "tnnls20263698967",
     "code": "",
     "video": "",
     "pdf": "",
-    "image": "",
-    "id": "pub-temporal-logic-guided-universal-task-representations-for-reinforcement-l",
-    "citationKey": "tnnls20263698967"
+    "image": ""
   },
   {
     "key": "doi:10.1109/tie.2026.3699864",
@@ -116,12 +116,12 @@
     "arxiv": "",
     "dblpUrl": "",
     "firstAuthor": false,
+    "id": "pub-relaxed-temporal-logic-motion-planning-via-graphs-of-convex-sets-under-p",
+    "citationKey": "tie20263699864",
     "code": "",
     "video": "",
     "pdf": "",
-    "image": "",
-    "id": "pub-relaxed-temporal-logic-motion-planning-via-graphs-of-convex-sets-under-p",
-    "citationKey": "tie20263699864"
+    "image": ""
   },
   {
     "key": "doi:10.1109/tcyb.2026.3668425",
@@ -148,12 +148,12 @@
     "arxiv": "",
     "dblpUrl": "",
     "firstAuthor": false,
+    "id": "pub-a-formal-framework-for-reactive-heterogeneous-multirobot-task-allocation",
+    "citationKey": "tcyb20263668425",
     "code": "",
     "video": "",
     "pdf": "",
-    "image": "",
-    "id": "pub-a-formal-framework-for-reactive-heterogeneous-multirobot-task-allocation",
-    "citationKey": "tcyb20263668425"
+    "image": ""
   },
   {
     "key": "journals/tase/ChenCZLK25",
@@ -182,11 +182,11 @@
     "image": "assets/publications/pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas.jpg",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "ChenCZLK25",
     "imageAlt": "Figure 14 from Fast Motion Planning, showing the quadruped robot experiment sequence",
     "imageSource": "Figure 14 of the paper",
-    "publishedDate": "2025-01-01"
+    "publishedDate": "2025-01-01",
+    "pdf": ""
   },
   {
     "key": "journals/tase/ZhouWCCWLK25",
@@ -217,9 +217,9 @@
     "video": "#video-placeholder",
     "image": "assets/publications/pub-local-observation.jpg",
     "code": "#code-placeholder",
-    "pdf": "",
     "citationKey": "ZhouWCCWLK25",
-    "publishedDate": "2025-01-01"
+    "publishedDate": "2025-01-01",
+    "pdf": ""
   },
   {
     "key": "doi:10.1016/j.jai.2024.12.005",
@@ -280,9 +280,9 @@
     "image": "assets/publications/pub-leeps-learning-end-to-end-legged-perceptive-parkour-skills-on-challengin.jpg",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "QianZZWCK24",
-    "publishedDate": "2024-10-14"
+    "publishedDate": "2024-10-14",
+    "pdf": ""
   },
   {
     "key": "conf/iros/ChenZLK24",
@@ -310,11 +310,11 @@
     "id": "pub-soft-task-planning-with-hierarchical-temporal-logic-specifications",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "ChenZLK24_2",
     "imageAlt": "Figure 3 from Soft Task Planning, showing the four-stage Gazebo simulation",
     "imageSource": "Figure 3 of the paper",
-    "publishedDate": "2024-10-14"
+    "publishedDate": "2024-10-14",
+    "pdf": ""
   },
   {
     "key": "journals/ral/ChenZWLK24",
@@ -343,9 +343,9 @@
     "image": "assets/publications/pub-fast-temporal-logic-mission-planning-of-multiple-robots-a-planning-decis.jpg",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "ChenZWLK24",
-    "publishedDate": "2024-07-01"
+    "publishedDate": "2024-07-01",
+    "pdf": ""
   },
   {
     "key": "journals/tai/ZhouWCCK24",
@@ -374,9 +374,9 @@
     "code": "#code-placeholder",
     "video": "#video-placeholder",
     "image": "assets/publications/pub-thin-stacked.jpg",
-    "pdf": "",
     "citationKey": "ZhouWCCK24",
-    "publishedDate": "2024-06-01"
+    "publishedDate": "2024-06-01",
+    "pdf": ""
   },
   {
     "key": "journals/tie/ZhouCCLKS24",
@@ -406,9 +406,9 @@
     "id": "pub-vision-based-reactive-temporal-logic-motion-planning-for-quadruped-robot",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "ZhouCCLKS24",
-    "publishedDate": "2024-06-01"
+    "publishedDate": "2024-06-01",
+    "pdf": ""
   },
   {
     "key": "conf/icra/ChenZLK24",
@@ -436,9 +436,9 @@
     "image": "assets/publications/pub-active-inference-for-reactive-temporal-logic-motion-planning.jpg",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "ChenZLK24",
-    "publishedDate": "2024-05-13"
+    "publishedDate": "2024-05-13",
+    "pdf": ""
   },
   {
     "key": "journals/robotica/WangZLLK24",
@@ -467,9 +467,9 @@
     "id": "pub-multi-modal-interaction-with-transformers-bridging-robots-and-human-with",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "WangZLLK24",
-    "publishedDate": "2023-11-13"
+    "publishedDate": "2023-11-13",
+    "pdf": ""
   },
   {
     "key": "conf/icdl/WangZZCCCLK23",
@@ -501,9 +501,9 @@
     "image": "assets/publications/pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye.jpg",
     "id": "pub-what-you-see-is-what-you-grasp-user-friendly-grasping-guided-by-near-eye",
     "code": "#code-placeholder",
-    "pdf": "",
     "citationKey": "WangZZCCCLK23",
-    "publishedDate": "2023-11-09"
+    "publishedDate": "2023-11-09",
+    "pdf": ""
   },
   {
     "key": "conf/icarm/QianZWLSK23",
@@ -533,9 +533,9 @@
     "id": "pub-vision-based-reactive-planning-and-control-of-quadruped-robots-in-unstru",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "QianZWLSK23",
-    "publishedDate": "2023-07-08"
+    "publishedDate": "2023-07-08",
+    "pdf": ""
   },
   {
     "key": "conf/icra/ChenZWK23",
@@ -563,9 +563,9 @@
     "image": "assets/publications/pub-a-hierarchical-decoupling-approach-for-fast-temporal-logic-motion-planni.jpg",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "ChenZWK23",
-    "publishedDate": "2023-05-29"
+    "publishedDate": "2023-05-29",
+    "pdf": ""
   },
   {
     "key": "journals/corr/abs-2209-07459",
@@ -594,9 +594,9 @@
     "code": "#code-placeholder",
     "video": "#video-placeholder",
     "image": "assets/publications/pub-hrgnet.jpg",
-    "pdf": "",
     "citationKey": "abs-2209-07459",
-    "publishedDate": "2022-09-15"
+    "publishedDate": "2022-09-15",
+    "pdf": ""
   },
   {
     "key": "conf/icarm/WangZWLK22",
@@ -625,9 +625,9 @@
     "image": "assets/publications/pub-unsupervised-representation-learning-for-visual-robotics-grasping.jpg",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "WangZWLK22",
-    "publishedDate": "2022-07-09"
+    "publishedDate": "2022-07-09",
+    "pdf": ""
   },
   {
     "key": "journals/ral/WangZK22",
@@ -654,8 +654,8 @@
     "id": "pub-when-transformer-meets-robotic-grasping-exploits-context-for-efficient-g",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
-    "pdf": "",
     "citationKey": "WangZK22",
-    "publishedDate": "2022-06-29"
+    "publishedDate": "2022-06-29",
+    "pdf": ""
   }
 ]

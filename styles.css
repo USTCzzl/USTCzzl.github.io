@@ -925,6 +925,13 @@ select {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.project-meta {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 680;
+  line-height: 1.55;
+}
+
 .visitor-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -1162,6 +1169,12 @@ select {
 
 .footer-inner p {
   margin: 0;
+}
+
+.footer-inner p:nth-child(2) {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  text-align: center;
 }
 
 .footer-inner a {

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "DHRNet-MP-PC",
+    "description": "Code for improved grasping of thin and stacked objects with DHRNet and multiview perception-based trajectory control.",
+    "url": "https://github.com/USTCzzl/DHRNet-MP-PC",
+    "stars": 1,
+    "forks": 0,
+    "updatedAt": "2024-09-04T02:20:14Z",
+    "pushedAt": "2023-10-27T23:54:26Z"
+  },
+  {
+    "name": "HRG_Net",
+    "description": "high resolution network for robotic grasping",
+    "url": "https://github.com/USTCzzl/HRG_Net",
+    "stars": 20,
+    "forks": 4,
+    "updatedAt": "2025-11-13T01:31:46Z",
+    "pushedAt": "2023-04-02T15:50:42Z"
+  },
+  {
+    "name": "double_reactive",
+    "description": "Repository related to dual reactive planning for heterogeneous robots in unknown environments.",
+    "url": "https://github.com/USTCzzl/double_reactive",
+    "stars": 0,
+    "forks": 0,
+    "updatedAt": "2023-07-27T05:52:54Z",
+    "pushedAt": "2023-07-27T06:29:52Z"
+  },
+  {
+    "name": "Task-and-Motion-Planning",
+    "description": "Notes in Robot Task and Motion Planning",
+    "url": "https://github.com/USTCzzl/Task-and-Motion-Planning",
+    "stars": 1,
+    "forks": 0,
+    "updatedAt": "2023-10-22T10:03:53Z",
+    "pushedAt": "2023-05-17T11:38:44Z"
+  }
+]

@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
 const NEWS_PATH = path.join(ROOT_DIR, "assets", "data", "news.json");
-const SYNC_SCRIPT = path.join(SCRIPT_DIR, "sync-dblp.mjs");
+const SYNC_SCRIPT = path.join(SCRIPT_DIR, "sync-homepage.mjs");
 
 function readArgs(argv) {
   const result = {};

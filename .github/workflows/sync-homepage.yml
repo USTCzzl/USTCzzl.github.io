@@ -1,0 +1,37 @@
+name: Sync homepage data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 0 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-homepage-data
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Refresh verified homepage sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/sync-homepage.mjs
+
+      - name: Commit homepage updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Refresh daily homepage data"
+          file_pattern: "index.html feed.xml sitemap.xml assets/data/publications.json assets/data/publications.bib assets/data/news.json assets/data/projects.json assets/data/profile.json assets/data/sync-status.json"

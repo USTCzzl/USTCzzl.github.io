@@ -12,12 +12,20 @@ const PUBLICATIONS_PATH = path.join(DATA_DIR, "publications.json");
 const BIB_PATH = path.join(DATA_DIR, "publications.bib");
 const NEWS_PATH = path.join(DATA_DIR, "news.json");
 const LINKS_PATH = path.join(DATA_DIR, "publication-links.json");
+const PROJECT_CONFIG_PATH = path.join(DATA_DIR, "homepage-config.json");
+const PROJECTS_PATH = path.join(DATA_DIR, "projects.json");
+const PROFILE_PATH = path.join(DATA_DIR, "profile.json");
+const SYNC_STATUS_PATH = path.join(DATA_DIR, "sync-status.json");
 const FEED_PATH = path.join(ROOT_DIR, "feed.xml");
+const SITEMAP_PATH = path.join(ROOT_DIR, "sitemap.xml");
 
 const DBLP_URL = "https://dblp.org/pid/314/6823.xml";
 const ORCID_URL = "https://pub.orcid.org/v3.0/0000-0002-4995-4732/works";
+const ORCID_EMPLOYMENTS_URL = "https://pub.orcid.org/v3.0/0000-0002-4995-4732/employments";
+const ORCID_EDUCATIONS_URL = "https://pub.orcid.org/v3.0/0000-0002-4995-4732/educations";
 const OPENALEX_URL = "https://api.openalex.org/works?filter=author.id:A5015310258&sort=publication_date:desc&per-page=100";
 const CROSSREF_WORKS_URL = "https://api.crossref.org/works";
+const GITHUB_REPOSITORIES_URL = "https://api.github.com/users/USTCzzl/repos?per_page=100&sort=updated";
 const SITE_URL = "https://ustczzl.github.io/";
 const OWNER_NAME = "Zhangli Zhou";
 const CONTACT_EMAIL = "zzl1215@mail.ustc.edu.cn";
@@ -115,6 +123,37 @@ function escapeHtml(value = "") {
 
 function escapeAttribute(value = "") {
   return escapeHtml(value).replaceAll("\n", "&#10;");
+}
+
+function singaporeDate(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en", {
+    day: "2-digit",
+    month: "2-digit",
+    timeZone: "Asia/Singapore",
+    year: "numeric"
+  }).formatToParts(date);
+  const values = Object.fromEntries(
+    parts
+      .filter((part) => part.type !== "literal")
+      .map((part) => [part.type, part.value])
+  );
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function formatHumanDate(value) {
+  if (!value) {
+    return "Unknown";
+  }
+  return new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+    year: "numeric"
+  }).format(new Date(`${value.slice(0, 10)}T12:00:00Z`));
+}
+
+function pluralize(count, singular, plural = `${singular}s`) {
+  return `${count} ${count === 1 ? singular : plural}`;
 }
 
 function parseAttributes(value = "") {
@@ -267,6 +306,34 @@ function parseOrcidWorks(payload) {
   return works;
 }
 
+function parseOrcidAffiliations(payload, summaryKey) {
+  const records = [];
+  for (const group of payload["affiliation-group"] || []) {
+    for (const item of group.summaries || []) {
+      const summary = item[summaryKey];
+      if (!summary?.organization?.name) {
+        continue;
+      }
+      const parseDate = (date) => {
+        const year = date?.year?.value || "";
+        const month = date?.month?.value || "";
+        const day = date?.day?.value || "";
+        return [year, month, day].filter(Boolean).join("-");
+      };
+      records.push({
+        role: cleanText(summary["role-title"] || summary["department-name"] || ""),
+        department: cleanText(summary["department-name"] || ""),
+        organization: cleanText(summary.organization.name),
+        city: cleanText(summary.organization.address?.city || ""),
+        country: cleanText(summary.organization.address?.country || ""),
+        startDate: parseDate(summary["start-date"]),
+        endDate: parseDate(summary["end-date"])
+      });
+    }
+  }
+  return records.sort((a, b) => (b.startDate || "").localeCompare(a.startDate || ""));
+}
+
 function parseOpenAlexWorks(payload) {
   const works = [];
   const seen = new Set();
@@ -352,21 +419,47 @@ function parseCrossrefWork(item, orcidWork) {
 
 function mergePublicationSources(...sources) {
   const publications = [];
-  const seenDois = new Set();
-  const seenTitles = new Set();
+  const indexesByDoi = new Map();
+  const indexesByTitle = new Map();
+
+  function fillMissing(primary, fallback) {
+    if (primary.type !== fallback.type) {
+      return primary;
+    }
+    const merged = { ...primary };
+    for (const [key, value] of Object.entries(fallback)) {
+      const current = merged[key];
+      const isMissing =
+        current === undefined ||
+        current === null ||
+        current === "" ||
+        (Array.isArray(current) && current.length === 0);
+      if (isMissing && value !== undefined && value !== null && value !== "") {
+        merged[key] = value;
+      }
+    }
+    return merged;
+  }
 
   for (const source of sources) {
     for (const publication of source || []) {
       const doi = normalizeDoi(publication.doi || publication.doiUrl || "");
       const title = normalizeTitle(publication.title);
-      if ((doi && seenDois.has(doi)) || (title && seenTitles.has(title))) {
+      const existingIndex = doi && indexesByDoi.has(doi)
+        ? indexesByDoi.get(doi)
+        : title && indexesByTitle.has(title)
+          ? indexesByTitle.get(title)
+          : undefined;
+      if (existingIndex !== undefined) {
+        publications[existingIndex] = fillMissing(publications[existingIndex], publication);
         continue;
       }
+      const nextIndex = publications.length;
       if (doi) {
-        seenDois.add(doi);
+        indexesByDoi.set(doi, nextIndex);
       }
       if (title) {
-        seenTitles.add(title);
+        indexesByTitle.set(title, nextIndex);
       }
       publications.push(publication);
     }
@@ -666,6 +759,124 @@ ${items.map(renderPublicationCard).join("\n\n")}
   }).filter(Boolean).join("\n\n");
 }
 
+function publicationMetrics(publications) {
+  const years = publications.map((publication) => publication.year).filter(Boolean);
+  return {
+    total: publications.length,
+    journals: publications.filter((publication) => publication.type === "journal").length,
+    conferences: publications.filter((publication) => publication.type === "conference").length,
+    preprints: publications.filter((publication) => publication.type === "preprint").length,
+    firstAuthorWorks: publications.filter((publication) => publication.firstAuthor).length,
+    firstAuthorJournals: publications.filter((publication) => {
+      return publication.type === "journal" && publication.firstAuthor;
+    }).length,
+    earliestYear: years.length ? Math.min(...years) : null,
+    latestYear: years.length ? Math.max(...years) : null
+  };
+}
+
+function featuredProjectsFromGitHub(repositories, config, previousProjects) {
+  const repositoriesByName = new Map(
+    (repositories || []).map((repository) => [repository.name.toLowerCase(), repository])
+  );
+  const previousByName = new Map(
+    (previousProjects || []).map((repository) => [repository.name.toLowerCase(), repository])
+  );
+
+  return (config.featuredRepositories || []).map((entry) => {
+    const repository = repositoriesByName.get(entry.name.toLowerCase());
+    const previous = previousByName.get(entry.name.toLowerCase()) || {};
+    return {
+      name: repository?.name || previous.name || entry.name,
+      description: repository?.description || previous.description || entry.fallbackDescription || "",
+      url: repository?.html_url || previous.url || `https://github.com/${config.githubUsername}/${entry.name}`,
+      stars: repository?.stargazers_count ?? previous.stars ?? 0,
+      forks: repository?.forks_count ?? previous.forks ?? 0,
+      updatedAt: repository?.updated_at || previous.updatedAt || "",
+      pushedAt: repository?.pushed_at || previous.pushedAt || ""
+    };
+  });
+}
+
+function renderProjectCard(project) {
+  const updatedDate = project.updatedAt ? project.updatedAt.slice(0, 10) : "";
+  const metadata = [
+    pluralize(project.stars || 0, "star"),
+    pluralize(project.forks || 0, "fork"),
+    updatedDate ? `updated ${formatHumanDate(updatedDate)}` : ""
+  ].filter(Boolean).join(" · ");
+
+  return `            <article class="project-card">
+              <h3>${escapeHtml(project.name)}</h3>
+              <p>${escapeHtml(project.description || "Research code and supporting materials.")}</p>
+              <p class="project-meta">${escapeHtml(metadata)}</p>
+              <a href="${escapeAttribute(project.url)}" rel="noopener">Open repository</a>
+            </article>`;
+}
+
+function renderProjects(projects) {
+  return projects.map(renderProjectCard).join("\n");
+}
+
+function renderResearchRecord(publications, projects) {
+  const metrics = publicationMetrics(publications);
+  const typeSummary = [
+    pluralize(metrics.journals, "journal article"),
+    pluralize(metrics.conferences, "conference paper"),
+    pluralize(metrics.preprints, "preprint")
+  ].join(", ");
+  const yearRange = metrics.earliestYear && metrics.latestYear
+    ? `${metrics.earliestYear}-${metrics.latestYear}`
+    : "the available record";
+  const projectNames = projects.map((project) => project.name).join(", ");
+
+  return `              <ul class="cv-list">
+                <li>
+                  <span>Publications</span>
+                  <strong data-publication-total>${metrics.total} indexed works</strong>
+                  <p>${escapeHtml(typeSummary)}; publication record spans ${escapeHtml(yearRange)}.</p>
+                </li>
+                <li>
+                  <span>First-author work</span>
+                  <strong>${pluralize(metrics.firstAuthorJournals, "first-author journal paper")}</strong>
+                  <p>${pluralize(metrics.firstAuthorWorks, "first-author work")} across the verified publication record.</p>
+                </li>
+                <li>
+                  <span>Open materials</span>
+                  <strong>${pluralize(projects.length, "featured research repository", "featured research repositories")}</strong>
+                  <p>${escapeHtml(projectNames)}; descriptions and activity are refreshed from GitHub.</p>
+                </li>
+              </ul>`;
+}
+
+function formatAffiliationDate(value) {
+  if (!value) {
+    return "";
+  }
+  const [year, month] = value.split("-");
+  return month ? `${year}.${Number.parseInt(month, 10)}` : year;
+}
+
+function renderAffiliations(records, openEndedLabel) {
+  return `              <ul class="cv-list">
+${records.map((record) => {
+    const range = [
+      formatAffiliationDate(record.startDate),
+      formatAffiliationDate(record.endDate) || openEndedLabel
+    ].filter(Boolean).join("-");
+    const title = [record.role, record.organization].filter(Boolean).join(", ");
+    const details = [record.department, record.city, record.country]
+      .filter((value, index, values) => value && values.indexOf(value) === index)
+      .join(", ");
+    return `                <li>
+                  <span>${escapeHtml(range)}</span>
+                  <strong>${escapeHtml(title)}</strong>
+                  <p>${escapeHtml(details || record.organization)}.</p>
+                </li>`;
+  }).join("\n")}
+              </ul>`;
+}
+
 function cleanBibValue(value = "") {
   return String(value).replace(/[{}]/g, "").replace(/\s+/g, " ").trim();
 }
@@ -753,6 +964,58 @@ function replaceNewsLayout(html, item) {
   return html.replace(/          <ul class="news-list"[\s\S]*?          <\/ul>/, renderNewsLayout(item));
 }
 
+function replaceProjectLayout(html, projects) {
+  return replaceBetween(
+    html,
+    "<!-- PROJECTS_START -->",
+    "<!-- PROJECTS_END -->",
+    renderProjects(projects)
+  );
+}
+
+function replaceResearchRecord(html, publications, projects) {
+  return replaceBetween(
+    html,
+    "<!-- RESEARCH_RECORD_START -->",
+    "<!-- RESEARCH_RECORD_END -->",
+    renderResearchRecord(publications, projects)
+  );
+}
+
+function replaceVerifiedProfile(html, profile) {
+  let nextHtml = html;
+  if (profile.employments?.length) {
+    nextHtml = replaceBetween(
+      nextHtml,
+      "<!-- EXPERIENCE_START -->",
+      "<!-- EXPERIENCE_END -->",
+      renderAffiliations(profile.employments, "present")
+    );
+  }
+  if (profile.educations?.length) {
+    nextHtml = replaceBetween(
+      nextHtml,
+      "<!-- EDUCATION_START -->",
+      "<!-- EDUCATION_END -->",
+      renderAffiliations(profile.educations, "present")
+    );
+  }
+  return nextHtml;
+}
+
+function replaceSyncLabels(html, syncDate) {
+  const label = formatHumanDate(syncDate);
+  return html
+    .replace(
+      /(<p class="last-updated" data-publications-updated>)[^<]*(<\/p>)/,
+      `$1Daily data check · ${label}$2`
+    )
+    .replace(
+      /(<span data-site-updated>)[^<]*(<\/span>)/,
+      `$1Data refreshed ${label}.$2`
+    );
+}
+
 function dateToRss(dateValue) {
   const date = /^\d{4}$/.test(dateValue)
     ? new Date(`${dateValue}-01-01T00:00:00Z`)
@@ -784,6 +1047,19 @@ function renderFeed(newsItems) {
 ${items}
   </channel>
 </rss>
+`;
+}
+
+function renderSitemap(syncDate) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${SITE_URL}</loc>
+    <lastmod>${syncDate}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
 `;
 }
 
@@ -836,23 +1112,34 @@ async function fetchDblpXml() {
 }
 
 async function fetchJson(url, headers = {}) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        "user-agent": `ustczzl-homepage-sync/1.0 (mailto:${CONTACT_EMAIL})`,
-        ...headers
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000);
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          "user-agent": `ustczzl-homepage-sync/1.0 (mailto:${CONTACT_EMAIL})`,
+          ...headers
+        }
+      });
+      if (response.ok) {
+        return await response.json();
       }
-    });
-    if (!response.ok) {
-      throw new Error(`${new URL(url).hostname} returned HTTP ${response.status}`);
+      const retryable = response.status === 429 || response.status >= 500;
+      if (!retryable || attempt === 2) {
+        throw new Error(`${new URL(url).hostname} returned HTTP ${response.status}`);
+      }
+    } catch (error) {
+      if (attempt === 2 || error.name === "AbortError") {
+        throw error;
+      }
+    } finally {
+      clearTimeout(timeout);
     }
-    return await response.json();
-  } finally {
-    clearTimeout(timeout);
+    await new Promise((resolve) => setTimeout(resolve, (attempt + 1) * 1000));
   }
+  throw new Error(`${new URL(url).hostname} did not return JSON`);
 }
 
 async function fetchCrossrefPublication(orcidWork) {
@@ -861,23 +1148,13 @@ async function fetchCrossrefPublication(orcidWork) {
 }
 
 function replacePublicationStats(html, publications) {
-  const total = publications.length;
-  const journalFirstAuthor = publications.filter((publication) => {
-    return publication.type === "journal" && publication.firstAuthor;
-  }).length;
-  const latestYear = Math.max(...publications.map((publication) => publication.year).filter(Boolean));
-  const updated = new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC"
-  }).format(new Date());
+  const metrics = publicationMetrics(publications);
 
   return html
-    .replace(/(<dt data-publication-total>)[^<]*(<\/dt>)/, `$1${total}$2`)
-    .replace(/(<strong data-publication-total>)[^<]*(<\/strong>)/, `$1${total} indexed works$2`)
-    .replace(/(<dt data-first-author-journals>)[^<]*(<\/dt>)/, `$1${journalFirstAuthor}$2`)
-    .replace(/(<dt data-latest-publication-year>)[^<]*(<\/dt>)/, `$1${latestYear}$2`)
-    .replace(/(<p class="last-updated" data-publications-updated>)[^<]*(<\/p>)/, `$1Updated ${updated}$2`);
+    .replace(/(<dt data-publication-total>)[^<]*(<\/dt>)/, `$1${metrics.total}$2`)
+    .replace(/(<strong data-publication-total>)[^<]*(<\/strong>)/, `$1${metrics.total} indexed works$2`)
+    .replace(/(<dt data-first-author-journals>)[^<]*(<\/dt>)/, `$1${metrics.firstAuthorJournals}$2`)
+    .replace(/(<dt data-latest-publication-year>)[^<]*(<\/dt>)/, `$1${metrics.latestYear || "-"}$2`);
 }
 
 async function writeText(filePath, value) {
@@ -886,21 +1163,48 @@ async function writeText(filePath, value) {
 }
 
 async function main() {
-  const [previousPublications, extrasByKey, existingNews, indexHtml] = await Promise.all([
+  const [
+    previousPublications,
+    extrasByKey,
+    existingNews,
+    projectConfig,
+    previousProjects,
+    previousProfile,
+    previousSyncStatus,
+    indexHtml
+  ] = await Promise.all([
     readJson(PUBLICATIONS_PATH, []),
     readJson(LINKS_PATH, {}),
     readJson(NEWS_PATH, []),
+    readJson(PROJECT_CONFIG_PATH, { githubUsername: "USTCzzl", featuredRepositories: [] }),
+    readJson(PROJECTS_PATH, []),
+    readJson(PROFILE_PATH, { employments: [], educations: [] }),
+    readJson(SYNC_STATUS_PATH, {}),
     fs.readFile(INDEX_PATH, "utf8")
   ]);
 
   let publications = previousPublications.length ? previousPublications : parsePublicationsFromHtml(indexHtml);
+  let projects = previousProjects;
+  let profile = previousProfile;
   const sourceParts = [];
+  const sourceStatus = {
+    DBLP: false,
+    ORCID: false,
+    ORCIDProfile: false,
+    OpenAlex: false,
+    Crossref: false,
+    GitHub: false
+  };
+  const syncDate = localOnly
+    ? previousSyncStatus.lastCheckedDate || singaporeDate()
+    : singaporeDate();
 
   if (!localOnly) {
     try {
       const xml = await fetchDblpXml();
       publications = parseDblpXml(xml);
       sourceParts.push("DBLP");
+      sourceStatus.DBLP = true;
     } catch (error) {
       console.warn(`DBLP sync failed: ${error.message}`);
     }
@@ -913,8 +1217,23 @@ async function main() {
       workSummarySources.push(orcidWorks);
       dateSummarySources.push(orcidWorks);
       sourceParts.push("ORCID");
+      sourceStatus.ORCID = true;
     } catch (error) {
       console.warn(`ORCID sync failed: ${error.message}`);
+    }
+
+    try {
+      const [employmentPayload, educationPayload] = await Promise.all([
+        fetchJson(ORCID_EMPLOYMENTS_URL, { accept: "application/vnd.orcid+json" }),
+        fetchJson(ORCID_EDUCATIONS_URL, { accept: "application/vnd.orcid+json" })
+      ]);
+      profile = {
+        employments: parseOrcidAffiliations(employmentPayload, "employment-summary"),
+        educations: parseOrcidAffiliations(educationPayload, "education-summary")
+      };
+      sourceStatus.ORCIDProfile = true;
+    } catch (error) {
+      console.warn(`ORCID profile sync failed: ${error.message}`);
     }
 
     try {
@@ -923,6 +1242,7 @@ async function main() {
       workSummarySources.push(openAlexWorks.filter((work) => work.year >= 2024));
       dateSummarySources.push(openAlexWorks);
       sourceParts.push("OpenAlex");
+      sourceStatus.OpenAlex = true;
     } catch (error) {
       console.warn(`OpenAlex sync failed: ${error.message}`);
     }
@@ -944,8 +1264,29 @@ async function main() {
     if (crossrefPublications.length) {
       sourceParts.push("Crossref");
     }
+    sourceStatus.Crossref = crossrefResults.every((result) => result.status === "fulfilled");
     publications = mergePublicationSources(publications, crossrefPublications, previousPublications);
     publications = enrichPublicationDates(publications, mergeWorkSummaries(...dateSummarySources));
+
+    try {
+      const githubHeaders = {
+        accept: "application/vnd.github+json",
+        "x-github-api-version": "2022-11-28"
+      };
+      if (process.env.GITHUB_TOKEN) {
+        githubHeaders.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+      }
+      const repositories = await fetchJson(GITHUB_REPOSITORIES_URL, githubHeaders);
+      projects = featuredProjectsFromGitHub(repositories, projectConfig, previousProjects);
+      sourceStatus.GitHub = true;
+      sourceParts.push("GitHub");
+    } catch (error) {
+      console.warn(`GitHub sync failed: ${error.message}`);
+    }
+  }
+
+  if (!projects.length) {
+    projects = featuredProjectsFromGitHub([], projectConfig, []);
   }
 
   publications = ensureCitationKeys(
@@ -981,6 +1322,10 @@ async function main() {
     renderPublicationGroups(publications)
   );
   nextHtml = replacePublicationStats(nextHtml, publications);
+  nextHtml = replaceProjectLayout(nextHtml, projects);
+  nextHtml = replaceResearchRecord(nextHtml, publications, projects);
+  nextHtml = replaceVerifiedProfile(nextHtml, profile);
+  nextHtml = replaceSyncLabels(nextHtml, syncDate);
   if (publications.length) {
     nextHtml = replaceHeroSpotlight(nextHtml, publications[0]);
   }
@@ -994,10 +1339,29 @@ async function main() {
     writeText(PUBLICATIONS_PATH, `${JSON.stringify(publications, null, 2)}\n`),
     writeText(BIB_PATH, `${publications.map(toBibTeX).join("\n\n")}\n`),
     writeText(NEWS_PATH, `${JSON.stringify(news, null, 2)}\n`),
-    writeText(FEED_PATH, renderFeed(news))
+    writeText(PROJECTS_PATH, `${JSON.stringify(projects, null, 2)}\n`),
+    writeText(PROFILE_PATH, `${JSON.stringify({
+      source: "ORCID",
+      lastCheckedDate: syncDate,
+      employments: profile.employments || [],
+      educations: profile.educations || []
+    }, null, 2)}\n`),
+    writeText(SYNC_STATUS_PATH, `${JSON.stringify({
+      lastCheckedDate: syncDate,
+      timezone: "Asia/Singapore",
+      sources: localOnly ? previousSyncStatus.sources || sourceStatus : sourceStatus,
+      publicationMetrics: publicationMetrics(publications),
+      featuredProjects: projects.length,
+      orcidProfileRecords: {
+        employments: profile.employments?.length || 0,
+        educations: profile.educations?.length || 0
+      }
+    }, null, 2)}\n`),
+    writeText(FEED_PATH, renderFeed(news)),
+    writeText(SITEMAP_PATH, renderSitemap(syncDate))
   ]);
 
-  console.log(`Synced ${publications.length} publications from ${sourceParts.join(" + ") || "local data"}.`);
+  console.log(`Synced ${publications.length} publications and ${projects.length} projects from ${sourceParts.join(" + ") || "local data"}.`);
   if (generatedNews.length) {
     console.log(`Added ${generatedNews.length} generated news item(s).`);
   }
