@@ -5,7 +5,7 @@
     "DBLP": true,
     "ORCID": true,
     "ORCIDProfile": true,
-    "OpenAlex": false,
+    "OpenAlex": true,
     "Crossref": true,
     "GitHub": true
   },
