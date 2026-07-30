@@ -20,11 +20,11 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Sync DBLP publications
+      - name: Sync verified publication sources
         run: node scripts/sync-dblp.mjs
 
       - name: Commit publication updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Sync publications from DBLP"
+          commit_message: "Sync publications from verified author sources"
           file_pattern: "index.html feed.xml assets/data/publications.json assets/data/publications.bib assets/data/news.json"

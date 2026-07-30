@@ -1,14 +1,30 @@
 {
+  "doi:10.1109/tro.2026.3718074": {
+    "id": "pub-from-ambiguous-language-to-verifiable-plans",
+    "image": "assets/publications/pub-from-ambiguous-language-to-verifiable-plans.jpg",
+    "imageAlt": "Figure 1 from From Ambiguous Language to Verifiable Plans, showing specification-preserving runtime object substitution",
+    "imageSource": "Figure 1 of the final manuscript"
+  },
+  "From Ambiguous Language to Verifiable Plans: Integrating Formal Synthesis and Dynamic Affordance Reasoning": {
+    "id": "pub-from-ambiguous-language-to-verifiable-plans",
+    "image": "assets/publications/pub-from-ambiguous-language-to-verifiable-plans.jpg",
+    "imageAlt": "Figure 1 from From Ambiguous Language to Verifiable Plans, showing specification-preserving runtime object substitution",
+    "imageSource": "Figure 1 of the final manuscript"
+  },
   "journals/ral/ZhouLK26": {
     "id": "pub-dual-reactive",
     "code": "#code-placeholder",
     "image": "assets/publications/pub-dual-reactive.jpg",
+    "imageAlt": "Figure 5 from Dual Reactive Planning, showing the Gazebo rescue mission execution sequence",
+    "imageSource": "Figure 5 of the paper",
     "video": "#video-placeholder"
   },
   "Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments": {
     "id": "pub-dual-reactive",
     "code": "#code-placeholder",
     "image": "assets/publications/pub-dual-reactive.jpg",
+    "imageAlt": "Figure 5 from Dual Reactive Planning, showing the Gazebo rescue mission execution sequence",
+    "imageSource": "Figure 5 of the paper",
     "video": "#video-placeholder"
   },
   "journals/tase/ZhouWCCWLK25": {
@@ -73,6 +89,8 @@
   "conf/iros/ChenZLK24": {
     "title": "Soft Task Planning With Hierarchical Temporal Logic Specifications",
     "image": "assets/publications/pub-soft-task-planning-with-hierarchical-temporal-logic-specifications.jpg",
+    "imageAlt": "Figure 3 from Soft Task Planning, showing the four-stage Gazebo simulation",
+    "imageSource": "Figure 3 of the paper",
     "id": "pub-soft-task-planning-with-hierarchical-temporal-logic-specifications",
     "code": "#code-placeholder",
     "video": "#video-placeholder"
@@ -122,6 +140,8 @@
   "journals/tase/ChenCZLK25": {
     "id": "pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas",
     "image": "assets/publications/pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas.jpg",
+    "imageAlt": "Figure 14 from Fast Motion Planning, showing the quadruped robot experiment sequence",
+    "imageSource": "Figure 14 of the paper",
     "code": "#code-placeholder",
     "video": "#video-placeholder",
     "title": "Fast Motion Planning in Dynamic Environments With Extended Predicate-Based Temporal Logic"
@@ -129,6 +149,8 @@
   "Fast Motion Planning in Dynamic Environments With Extended Predicate-Based Temporal Logic": {
     "id": "pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas",
     "image": "assets/publications/pub-fast-motion-planning-in-dynamic-environments-with-extended-predicate-bas.jpg",
+    "imageAlt": "Figure 14 from Fast Motion Planning, showing the quadruped robot experiment sequence",
+    "imageSource": "Figure 14 of the paper",
     "code": "#code-placeholder",
     "video": "#video-placeholder"
   },
@@ -180,6 +202,8 @@
   "Soft Task Planning With Hierarchical Temporal Logic Specifications": {
     "id": "pub-soft-task-planning-with-hierarchical-temporal-logic-specifications",
     "image": "assets/publications/pub-soft-task-planning-with-hierarchical-temporal-logic-specifications.jpg",
+    "imageAlt": "Figure 3 from Soft Task Planning, showing the four-stage Gazebo simulation",
+    "imageSource": "Figure 3 of the paper",
     "code": "#code-placeholder",
     "video": "#video-placeholder"
   },

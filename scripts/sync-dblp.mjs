@@ -15,8 +15,12 @@ const LINKS_PATH = path.join(DATA_DIR, "publication-links.json");
 const FEED_PATH = path.join(ROOT_DIR, "feed.xml");
 
 const DBLP_URL = "https://dblp.org/pid/314/6823.xml";
+const ORCID_URL = "https://pub.orcid.org/v3.0/0000-0002-4995-4732/works";
+const OPENALEX_URL = "https://api.openalex.org/works?filter=author.id:A5015310258&sort=publication_date:desc&per-page=100";
+const CROSSREF_WORKS_URL = "https://api.crossref.org/works";
 const SITE_URL = "https://ustczzl.github.io/";
 const OWNER_NAME = "Zhangli Zhou";
+const CONTACT_EMAIL = "zzl1215@mail.ustc.edu.cn";
 const args = new Set(process.argv.slice(2));
 const initMode = args.has("--init");
 const localOnly = args.has("--local-only");
@@ -164,6 +168,21 @@ function urlForDoi(doi = "") {
   return doi ? `https://doi.org/${doi}` : "";
 }
 
+function normalizeDoi(value = "") {
+  return extractDoi(value).toLowerCase();
+}
+
+function datePartsToIso(dateParts = []) {
+  if (!dateParts.length || !dateParts[0]) {
+    return "";
+  }
+  const [year, month = 1, day = 1] = dateParts[0];
+  if (!year) {
+    return "";
+  }
+  return `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+}
+
 function parseDblpXml(xml) {
   const records = [];
   const pattern = /<(article|inproceedings)\b([^>]*)>([\s\S]*?)<\/\1>/gi;
@@ -214,6 +233,162 @@ function parseDblpXml(xml) {
   }
 
   return records;
+}
+
+function parseOrcidWorks(payload) {
+  const works = [];
+  const seen = new Set();
+
+  for (const group of payload.group || []) {
+    for (const summary of group["work-summary"] || []) {
+      const externalIds = summary["external-ids"]?.["external-id"] || [];
+      const doiEntry = externalIds.find((entry) => entry["external-id-type"]?.toLowerCase() === "doi");
+      const doi = normalizeDoi(doiEntry?.["external-id-value"] || "");
+      if (!doi || seen.has(doi)) {
+        continue;
+      }
+      seen.add(doi);
+      const publicationDate = summary["publication-date"] || {};
+      const year = Number.parseInt(publicationDate.year?.value, 10) || null;
+      const month = Number.parseInt(publicationDate.month?.value, 10) || 1;
+      const day = Number.parseInt(publicationDate.day?.value, 10) || 1;
+      works.push({
+        doi,
+        title: cleanText(summary.title?.title?.value || ""),
+        venue: cleanText(summary["journal-title"]?.value || ""),
+        year,
+        publishedDate: year
+          ? `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`
+          : ""
+      });
+    }
+  }
+
+  return works;
+}
+
+function parseOpenAlexWorks(payload) {
+  const works = [];
+  const seen = new Set();
+
+  for (const item of payload.results || []) {
+    const doi = normalizeDoi(item.doi || "");
+    const ownerIsAuthor = (item.authorships || [])
+      .some((authorship) => normalizeSpace(authorship.author?.display_name || "") === OWNER_NAME);
+    if (!doi || !ownerIsAuthor || seen.has(doi)) {
+      continue;
+    }
+    seen.add(doi);
+    works.push({
+      doi,
+      title: cleanText(item.display_name || ""),
+      venue: cleanText(item.primary_location?.source?.display_name || ""),
+      year: Number.parseInt(item.publication_year, 10) || null,
+      publishedDate: item.publication_date || ""
+    });
+  }
+
+  return works;
+}
+
+function mergeWorkSummaries(...sources) {
+  const works = [];
+  const seen = new Set();
+  for (const source of sources) {
+    for (const work of source || []) {
+      if (!work.doi || seen.has(work.doi)) {
+        continue;
+      }
+      seen.add(work.doi);
+      works.push(work);
+    }
+  }
+  return works;
+}
+
+function parseCrossrefWork(item, orcidWork) {
+  const doi = normalizeDoi(item.DOI || orcidWork.doi);
+  const authors = (item.author || [])
+    .map((author) => normalizeSpace([author.given, author.family].filter(Boolean).join(" ")))
+    .filter(Boolean);
+  const title = cleanText(item.title?.[0] || orcidWork.title);
+  const publishedParts = item.published?.["date-parts"] || item.issued?.["date-parts"] || [];
+  const year = Number.parseInt(publishedParts[0]?.[0], 10) || orcidWork.year;
+  const venue = cleanText(item["container-title"]?.[0] || orcidWork.venue);
+  const crossrefType = item.type || "";
+  const type = crossrefType === "proceedings-article"
+    ? "conference"
+    : crossrefType === "posted-content"
+      ? "preprint"
+      : "journal";
+  const publishedDate = item.created?.["date-time"]?.slice(0, 10)
+    || datePartsToIso(publishedParts)
+    || orcidWork.publishedDate;
+
+  if (!doi || !title || !year || !authors.length) {
+    throw new Error(`Crossref metadata is incomplete for ${doi || orcidWork.title}`);
+  }
+
+  return {
+    key: `doi:${doi}`,
+    type,
+    year,
+    publishedDate,
+    title,
+    authors,
+    venue,
+    journal: type === "journal" || type === "preprint" ? venue : "",
+    booktitle: type === "conference" ? venue : "",
+    volume: item.volume || "",
+    number: item.issue || "",
+    pages: item.page || "",
+    doi,
+    doiUrl: urlForDoi(doi),
+    arxiv: "",
+    dblpUrl: "",
+    firstAuthor: authors[0] === OWNER_NAME
+  };
+}
+
+function mergePublicationSources(...sources) {
+  const publications = [];
+  const seenDois = new Set();
+  const seenTitles = new Set();
+
+  for (const source of sources) {
+    for (const publication of source || []) {
+      const doi = normalizeDoi(publication.doi || publication.doiUrl || "");
+      const title = normalizeTitle(publication.title);
+      if ((doi && seenDois.has(doi)) || (title && seenTitles.has(title))) {
+        continue;
+      }
+      if (doi) {
+        seenDois.add(doi);
+      }
+      if (title) {
+        seenTitles.add(title);
+      }
+      publications.push(publication);
+    }
+  }
+
+  return publications;
+}
+
+function enrichPublicationDates(publications, workSummaries) {
+  const byDoi = new Map(workSummaries.filter((work) => work.doi).map((work) => [work.doi, work]));
+  const byTitle = new Map(workSummaries.filter((work) => work.title).map((work) => [normalizeTitle(work.title), work]));
+
+  return publications.map((publication) => {
+    if (publication.publishedDate) {
+      return publication;
+    }
+    const doi = normalizeDoi(publication.doi || publication.doiUrl || "");
+    const match = byDoi.get(doi) || byTitle.get(normalizeTitle(publication.title));
+    return match?.publishedDate
+      ? { ...publication, publishedDate: match.publishedDate }
+      : publication;
+  });
 }
 
 function parseLinksFromHtml(block) {
@@ -331,6 +506,11 @@ function sortPublications(publications) {
     if (b.year !== a.year) {
       return b.year - a.year;
     }
+    const dateA = a.publishedDate || `${a.year}-01-01`;
+    const dateB = b.publishedDate || `${b.year}-01-01`;
+    if (dateB !== dateA) {
+      return dateB.localeCompare(dateA);
+    }
     if ((order[a.type] ?? 9) !== (order[b.type] ?? 9)) {
       return (order[a.type] ?? 9) - (order[b.type] ?? 9);
     }
@@ -400,19 +580,8 @@ function keywordsFor(publication) {
   );
 }
 
-function publicationImage(publication) {
-  if (publication.image) {
-    return publication.image;
-  }
-
-  const title = normalizeTitle(publication.title);
-  if (title.includes("eye")) {
-    return "assets/video-eye-tracking.jpg";
-  }
-  if (title.includes("grasp") || title.includes("stacked") || title.includes("transformer")) {
-    return "assets/video-stacked.jpg";
-  }
-  return "assets/hero-local-observation.jpg";
+function isUsefulLink(value = "") {
+  return Boolean(value) && !value.startsWith("#");
 }
 
 function renderPublicationActions(publication, bibtex) {
@@ -423,13 +592,13 @@ function renderPublicationActions(publication, bibtex) {
   if (publication.arxiv) {
     links.push(`<a href="${escapeAttribute(publication.arxiv)}" rel="noopener">arXiv</a>`);
   }
-  if (publication.pdf) {
+  if (isUsefulLink(publication.pdf)) {
     links.push(`<a href="${escapeAttribute(publication.pdf)}" rel="noopener">PDF</a>`);
   }
-  if (publication.code) {
+  if (isUsefulLink(publication.code)) {
     links.push(`<a href="${escapeAttribute(publication.code)}" rel="noopener">Code</a>`);
   }
-  if (publication.video) {
+  if (isUsefulLink(publication.video)) {
     links.push(`<a href="${escapeAttribute(publication.video)}" rel="noopener">Video</a>`);
   }
   links.push(`<button class="copy-bibtex" type="button" data-bibtex="${escapeAttribute(bibtex)}">BibTeX</button>`);
@@ -447,13 +616,18 @@ function renderPublicationCard(publication) {
     .map((author) => author === OWNER_NAME ? `<strong>${escapeHtml(author)}</strong>` : escapeHtml(author))
     .join(", ");
   const bibtex = toBibTeX(publication);
-  const image = publicationImage(publication);
   const imageTarget = publication.doiUrl || publication.arxiv || publication.video || publication.code || `#${publication.id}`;
+  const thumbnail = publication.image
+    ? `<a class="pub-thumb" href="${escapeAttribute(imageTarget)}" rel="noopener" aria-label="${escapeAttribute(`Open ${publication.title}`)}">
+                <img src="${escapeAttribute(publication.image)}" alt="${escapeAttribute(publication.imageAlt || `${publication.title} figure from the paper`)}" loading="lazy">
+              </a>`
+    : `<a class="pub-thumb pub-thumb-placeholder" href="${escapeAttribute(imageTarget)}" rel="noopener" aria-label="${escapeAttribute(`Open ${publication.title}`)}">
+                <span aria-hidden="true">${escapeHtml(typeLabel(publication.type))}</span>
+                <small>Verified publication record</small>
+              </a>`;
 
   return `            <article class="publication-card" data-type="${escapeAttribute(typeTokens)}" data-year="${escapeAttribute(publication.year)}" data-keywords="${escapeAttribute(keywordsFor(publication))}" id="${escapeAttribute(publication.id)}">
-              <a class="pub-thumb" href="${escapeAttribute(imageTarget)}" rel="noopener" aria-label="${escapeAttribute(`Open ${publication.title}`)}">
-                <img src="${escapeAttribute(image)}" alt="${escapeAttribute(`${publication.title} visual summary`)}" loading="lazy">
-              </a>
+              ${thumbnail}
               <div class="pub-body">
                 <div class="pub-meta">
                   ${meta}
@@ -466,6 +640,30 @@ function renderPublicationCard(publication) {
                 </div>
               </div>
             </article>`;
+}
+
+function renderPublicationGroups(publications) {
+  const groups = [
+    { type: "journal", title: "Journal Articles" },
+    { type: "conference", title: "Conference Papers" },
+    { type: "preprint", title: "Preprints" }
+  ];
+
+  return groups.map((group) => {
+    const items = publications.filter((publication) => publication.type === group.type);
+    if (!items.length) {
+      return "";
+    }
+    return `            <section class="publication-group" data-publication-group="${group.type}" aria-labelledby="publication-group-${group.type}">
+              <div class="publication-group-heading">
+                <h3 id="publication-group-${group.type}">${group.title}</h3>
+                <span>${items.length}</span>
+              </div>
+              <div class="publication-group-list">
+${items.map(renderPublicationCard).join("\n\n")}
+              </div>
+            </section>`;
+  }).filter(Boolean).join("\n\n");
 }
 
 function cleanBibValue(value = "") {
@@ -505,6 +703,31 @@ function renderNewsLayout(item) {
   return `          <ul class="news-list" aria-label="Latest research news">
 ${renderFeaturedNews(item)}
           </ul>`;
+}
+
+function renderHeroSpotlight(publication) {
+  const target = publication.doiUrl || publication.arxiv || `#${publication.id}`;
+  const visual = publication.image
+    ? `<a class="spotlight-image" href="${escapeAttribute(target)}" rel="noopener" aria-label="${escapeAttribute(`Open ${publication.title}`)}">
+                <img src="${escapeAttribute(publication.image)}" alt="${escapeAttribute(publication.imageAlt || `${publication.title} figure from the paper`)}">
+              </a>`
+    : `<a class="spotlight-image spotlight-image-placeholder" href="${escapeAttribute(target)}" rel="noopener"><span>${escapeHtml(typeLabel(publication.type))}</span></a>`;
+
+  return `            <article class="hero-spotlight">
+              ${visual}
+              <div>
+                <p class="spotlight-label">Latest paper</p>
+                <h3><a href="${escapeAttribute(target)}" rel="noopener">${escapeHtml(publication.title)}</a></h3>
+                <p>${escapeHtml(publication.venue)}, ${escapeHtml(publication.year)}.</p>
+              </div>
+            </article>`;
+}
+
+function replaceHeroSpotlight(html, publication) {
+  return html.replace(
+    /            <article class="hero-spotlight">[\s\S]*?            <\/article>/,
+    renderHeroSpotlight(publication)
+  );
 }
 
 function replaceBetween(html, startMarker, endMarker, replacement) {
@@ -569,8 +792,8 @@ function publicationNews(publication) {
   const venue = publication.venue || "a new venue";
   const ownerIsFirst = firstAuthor === OWNER_NAME;
   const title = ownerIsFirst
-    ? `Congratulations to ${OWNER_NAME} (first author) on having the paper "${publication.title}" accepted by ${venue}.`
-    : `Congratulations to ${firstAuthor} and collaborators on having the paper "${publication.title}" accepted by ${venue}.`;
+    ? `Congratulations to ${OWNER_NAME} (first author) on publishing "${publication.title}" in ${venue}.`
+    : `Congratulations to ${firstAuthor} and collaborators on publishing "${publication.title}" in ${venue}.`;
   const links = [
     publication.doiUrl ? { label: "DOI", url: publication.doiUrl } : null,
     publication.code ? { label: "Code", url: publication.code } : null,
@@ -578,10 +801,10 @@ function publicationNews(publication) {
   ].filter(Boolean);
 
   return {
-    id: `news-${new Date().toISOString().slice(0, 10)}-${slugify(publication.title)}`,
-    date: new Date().toISOString().slice(0, 10),
+    id: `news-${publication.publishedDate || new Date().toISOString().slice(0, 10)}-${slugify(publication.title)}`,
+    date: publication.publishedDate || new Date().toISOString().slice(0, 10),
     title,
-    summary: `${publication.title} has been accepted by ${venue}.`,
+    summary: `${publication.title} has been published in ${venue}.`,
     links
   };
 }
@@ -612,6 +835,51 @@ async function fetchDblpXml() {
   }
 }
 
+async function fetchJson(url, headers = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        "user-agent": `ustczzl-homepage-sync/1.0 (mailto:${CONTACT_EMAIL})`,
+        ...headers
+      }
+    });
+    if (!response.ok) {
+      throw new Error(`${new URL(url).hostname} returned HTTP ${response.status}`);
+    }
+    return await response.json();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function fetchCrossrefPublication(orcidWork) {
+  const payload = await fetchJson(`${CROSSREF_WORKS_URL}/${encodeURIComponent(orcidWork.doi)}`);
+  return parseCrossrefWork(payload.message || {}, orcidWork);
+}
+
+function replacePublicationStats(html, publications) {
+  const total = publications.length;
+  const journalFirstAuthor = publications.filter((publication) => {
+    return publication.type === "journal" && publication.firstAuthor;
+  }).length;
+  const latestYear = Math.max(...publications.map((publication) => publication.year).filter(Boolean));
+  const updated = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC"
+  }).format(new Date());
+
+  return html
+    .replace(/(<dt data-publication-total>)[^<]*(<\/dt>)/, `$1${total}$2`)
+    .replace(/(<strong data-publication-total>)[^<]*(<\/strong>)/, `$1${total} indexed works$2`)
+    .replace(/(<dt data-first-author-journals>)[^<]*(<\/dt>)/, `$1${journalFirstAuthor}$2`)
+    .replace(/(<dt data-latest-publication-year>)[^<]*(<\/dt>)/, `$1${latestYear}$2`)
+    .replace(/(<p class="last-updated" data-publications-updated>)[^<]*(<\/p>)/, `$1Updated ${updated}$2`);
+}
+
 async function writeText(filePath, value) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, value, "utf8");
@@ -625,21 +893,59 @@ async function main() {
     fs.readFile(INDEX_PATH, "utf8")
   ]);
 
-  let publications = [];
-  let source = "existing HTML";
+  let publications = previousPublications.length ? previousPublications : parsePublicationsFromHtml(indexHtml);
+  const sourceParts = [];
 
   if (!localOnly) {
     try {
       const xml = await fetchDblpXml();
       publications = parseDblpXml(xml);
-      source = "DBLP";
+      sourceParts.push("DBLP");
     } catch (error) {
       console.warn(`DBLP sync failed: ${error.message}`);
     }
-  }
 
-  if (!publications.length) {
-    publications = previousPublications.length ? previousPublications : parsePublicationsFromHtml(indexHtml);
+    const workSummarySources = [];
+    const dateSummarySources = [];
+    try {
+      const orcidPayload = await fetchJson(ORCID_URL, { accept: "application/json" });
+      const orcidWorks = parseOrcidWorks(orcidPayload);
+      workSummarySources.push(orcidWorks);
+      dateSummarySources.push(orcidWorks);
+      sourceParts.push("ORCID");
+    } catch (error) {
+      console.warn(`ORCID sync failed: ${error.message}`);
+    }
+
+    try {
+      const openAlexPayload = await fetchJson(`${OPENALEX_URL}&mailto=${encodeURIComponent(CONTACT_EMAIL)}`);
+      const openAlexWorks = parseOpenAlexWorks(openAlexPayload);
+      workSummarySources.push(openAlexWorks.filter((work) => work.year >= 2024));
+      dateSummarySources.push(openAlexWorks);
+      sourceParts.push("OpenAlex");
+    } catch (error) {
+      console.warn(`OpenAlex sync failed: ${error.message}`);
+    }
+
+    const knownDois = new Set(publications.map((publication) => normalizeDoi(publication.doi || publication.doiUrl || "")).filter(Boolean));
+    const knownTitles = new Set(publications.map((publication) => normalizeTitle(publication.title)).filter(Boolean));
+    const missingWorks = mergeWorkSummaries(...workSummarySources).filter((work) => {
+      return !knownDois.has(work.doi) && !knownTitles.has(normalizeTitle(work.title));
+    });
+    const crossrefResults = await Promise.allSettled(missingWorks.map(fetchCrossrefPublication));
+    const crossrefPublications = [];
+    crossrefResults.forEach((result, index) => {
+      if (result.status === "fulfilled") {
+        crossrefPublications.push(result.value);
+      } else {
+        console.warn(`Crossref sync failed for ${missingWorks[index].doi}: ${result.reason.message}`);
+      }
+    });
+    if (crossrefPublications.length) {
+      sourceParts.push("Crossref");
+    }
+    publications = mergePublicationSources(publications, crossrefPublications, previousPublications);
+    publications = enrichPublicationDates(publications, mergeWorkSummaries(...dateSummarySources));
   }
 
   publications = ensureCitationKeys(
@@ -672,8 +978,12 @@ async function main() {
     nextHtml,
     "<!-- PUBLICATIONS_START -->",
     "<!-- PUBLICATIONS_END -->",
-    publications.map(renderPublicationCard).join("\n\n")
+    renderPublicationGroups(publications)
   );
+  nextHtml = replacePublicationStats(nextHtml, publications);
+  if (publications.length) {
+    nextHtml = replaceHeroSpotlight(nextHtml, publications[0]);
+  }
 
   if (news.length) {
     nextHtml = replaceNewsLayout(nextHtml, news[0]);
@@ -687,7 +997,7 @@ async function main() {
     writeText(FEED_PATH, renderFeed(news))
   ]);
 
-  console.log(`Synced ${publications.length} publications from ${source}.`);
+  console.log(`Synced ${publications.length} publications from ${sourceParts.join(" + ") || "local data"}.`);
   if (generatedNews.length) {
     console.log(`Added ${generatedNews.length} generated news item(s).`);
   }

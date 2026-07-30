@@ -363,12 +363,28 @@ select {
   background: #fff;
 }
 
+.spotlight-image {
+  display: block;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 2px);
+}
+
 .hero-spotlight img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: calc(var(--radius) - 2px);
   object-fit: cover;
+}
+
+.spotlight-image-placeholder {
+  display: flex;
+  aspect-ratio: 4 / 3;
+  align-items: center;
+  justify-content: center;
+  color: var(--teal-dark);
+  background: var(--soft);
+  font-weight: 820;
+  text-decoration: none;
 }
 
 .spotlight-label {
@@ -384,6 +400,15 @@ select {
   margin: 0;
   font-size: 19px;
   line-height: 1.25;
+}
+
+.hero-spotlight h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-spotlight h3 a:hover {
+  color: var(--clay);
 }
 
 .hero-spotlight p:last-child {
@@ -674,6 +699,39 @@ select {
 
 .publication-list {
   display: grid;
+  gap: 34px;
+}
+
+.publication-group {
+  display: grid;
+  gap: 14px;
+}
+
+.publication-group.is-hidden {
+  display: none;
+}
+
+.publication-group-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--teal-dark);
+}
+
+.publication-group-heading h3 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.publication-group-heading span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.publication-group-list {
+  display: grid;
   gap: 14px;
 }
 
@@ -709,6 +767,32 @@ select {
 .pub-thumb:hover img {
   transform: scale(1.035);
   filter: saturate(1.08);
+}
+
+.pub-thumb-placeholder {
+  display: flex;
+  aspect-ratio: 4 / 3;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 18px;
+  color: var(--teal-dark);
+  background:
+    linear-gradient(135deg, rgba(35, 78, 111, 0.08), rgba(37, 115, 112, 0.16)),
+    var(--soft);
+  text-align: center;
+}
+
+.pub-thumb-placeholder span {
+  font-size: 18px;
+  font-weight: 820;
+}
+
+.pub-thumb-placeholder small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 680;
 }
 
 .pub-body {

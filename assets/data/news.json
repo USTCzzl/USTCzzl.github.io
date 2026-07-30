@@ -1,5 +1,65 @@
 [
   {
+    "id": "news-2026-07-29-from-ambiguous-language-to-verifiable-plans-integrating-formal-synthesis",
+    "date": "2026-07-29",
+    "title": "Congratulations to Zhangli Zhou (first author) on publishing \"From Ambiguous Language to Verifiable Plans: Integrating Formal Synthesis and Dynamic Affordance Reasoning\" in IEEE Transactions on Robotics.",
+    "summary": "From Ambiguous Language to Verifiable Plans: Integrating Formal Synthesis and Dynamic Affordance Reasoning has been published in IEEE Transactions on Robotics.",
+    "links": [
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.1109/tro.2026.3718074"
+      }
+    ]
+  },
+  {
+    "id": "news-2026-06-18-temporal-logic-guided-universal-task-representations-for-reinforcement-l",
+    "date": "2026-06-18",
+    "title": "Congratulations to Hao Zhang and collaborators on publishing \"Temporal Logic Guided Universal Task Representations for Reinforcement Learning\" in IEEE Transactions on Neural Networks and Learning Systems.",
+    "summary": "Temporal Logic Guided Universal Task Representations for Reinforcement Learning has been published in IEEE Transactions on Neural Networks and Learning Systems.",
+    "links": [
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.1109/tnnls.2026.3698967"
+      }
+    ]
+  },
+  {
+    "id": "news-2026-06-17-relaxed-temporal-logic-motion-planning-via-graphs-of-convex-sets-under-p",
+    "date": "2026-06-17",
+    "title": "Congratulations to Hao Li and collaborators on publishing \"Relaxed Temporal Logic Motion Planning via Graphs of Convex Sets Under Partial Task Infeasibility\" in IEEE Transactions on Industrial Electronics.",
+    "summary": "Relaxed Temporal Logic Motion Planning via Graphs of Convex Sets Under Partial Task Infeasibility has been published in IEEE Transactions on Industrial Electronics.",
+    "links": [
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.1109/tie.2026.3699864"
+      }
+    ]
+  },
+  {
+    "id": "news-2026-03-18-a-formal-framework-for-reactive-heterogeneous-multirobot-task-allocation",
+    "date": "2026-03-18",
+    "title": "Congratulations to Lin Li and collaborators on publishing \"A Formal Framework for Reactive Heterogeneous Multirobot Task Allocation in Uncertain Semantic Environments\" in IEEE Transactions on Cybernetics.",
+    "summary": "A Formal Framework for Reactive Heterogeneous Multirobot Task Allocation in Uncertain Semantic Environments has been published in IEEE Transactions on Cybernetics.",
+    "links": [
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.1109/tcyb.2026.3668425"
+      }
+    ]
+  },
+  {
+    "id": "news-2024-12-31-reinforcement-learning-with-soft-temporal-logic-constraints-using-limit-",
+    "date": "2024-12-31",
+    "title": "Congratulations to Mingyu Cai and collaborators on publishing \"Reinforcement learning with soft temporal logic constraints using limit-deterministic generalized Büchi automaton\" in Journal of Automation and Intelligence.",
+    "summary": "Reinforcement learning with soft temporal logic constraints using limit-deterministic generalized Büchi automaton has been published in Journal of Automation and Intelligence.",
+    "links": [
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.1016/j.jai.2024.12.005"
+      }
+    ]
+  },
+  {
     "id": "news-2026-ral-dual-reactive",
     "date": "2026",
     "title": "Congratulations to Zhangli Zhou (first author) on having the paper \"Dual Reactive Planning for Heterogeneous Robots With Evolving Capabilities in Unknown Environments\" accepted by IEEE Robotics and Automation Letters (RA-L).",

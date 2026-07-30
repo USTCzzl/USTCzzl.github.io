@@ -12,10 +12,10 @@ It replaces the current AcademicPages template front page with a single-page res
 - `assets/data/publications.json` - generated publication data
 - `assets/data/publications.bib` - generated BibTeX export
 - `assets/data/news.json` - editable news source
-- `assets/data/publication-links.json` - manual DOI/arXiv/code/video/title overrides preserved during DBLP sync
-- `scripts/sync-dblp.mjs` - pulls DBLP, regenerates publications, BibTeX, RSS, and news blocks
+- `assets/data/publication-links.json` - manual DOI/arXiv/code/video/image/title overrides preserved during publication sync
+- `scripts/sync-dblp.mjs` - combines DBLP, ORCID, OpenAlex, and Crossref, then regenerates publications, BibTeX, RSS, homepage statistics, and news
 - `scripts/add-news.mjs` - adds an immediate acceptance/news item before DBLP has indexed the paper
-- `.github/workflows/sync-publications.yml` - GitHub Actions workflow that syncs DBLP every 6 hours or on manual dispatch
+- `.github/workflows/sync-publications.yml` - GitHub Actions workflow that syncs verified author records every 6 hours or on manual dispatch
 - `assets/hero-local-observation.jpg` - robot experiment image used for the first screen
 - `assets/video-*.jpg` - local YouTube cover images for the video cards
 - `robots.txt` and `sitemap.xml` - search engine helpers
@@ -24,11 +24,11 @@ It replaces the current AcademicPages template front page with a single-page res
 
 Place these files at the root of the `USTCzzl.github.io` repository and push to GitHub Pages. No build command is required.
 
-The included GitHub Actions workflow runs `node scripts/sync-dblp.mjs` every 6 hours and commits changes when DBLP has new records. You can also run it manually from the Actions tab.
+The included GitHub Actions workflow runs `node scripts/sync-dblp.mjs` every 6 hours and commits changes when a verified source has new records. You can also run it manually from the Actions tab.
 
 ## Publication sync workflow
 
-Initialize or refresh from DBLP:
+Initialize or refresh the combined publication record:
 
 ```bash
 node scripts/sync-dblp.mjs
@@ -46,7 +46,9 @@ node scripts/add-news.mjs \
   --link "https://doi.org/..."
 ```
 
-Keep custom paper links in `assets/data/publication-links.json`. The DBLP sync preserves these manual code, video, arXiv, PDF, image, and title overrides.
+DBLP remains the primary bibliography. ORCID and the ORCID-linked OpenAlex author record discover newer DOI records before DBLP indexes them, and Crossref supplies the canonical metadata. The generated homepage groups journal articles, conference papers, and preprints separately and sorts each group newest first.
+
+Keep custom paper links and verified paper-figure paths in `assets/data/publication-links.json`. The sync preserves these overrides. Papers without a verified figure use a neutral publication placeholder; the script never borrows an image from another paper.
 
 ## Suggested next edits
 

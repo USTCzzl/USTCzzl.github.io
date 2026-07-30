@@ -24,6 +24,7 @@ const searchInput = document.querySelector("#publication-search");
 const yearSelect = document.querySelector("[data-year-filter]");
 const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
 const publicationCards = Array.from(document.querySelectorAll(".publication-card"));
+const publicationGroups = Array.from(document.querySelectorAll("[data-publication-group]"));
 const countTarget = document.querySelector("[data-publication-count]");
 let activeFilter = "all";
 
@@ -86,6 +87,12 @@ function updatePublications() {
     if (visible) {
       shown += 1;
     }
+  });
+
+  publicationGroups.forEach((group) => {
+    const hasVisibleCard = Array.from(group.querySelectorAll(".publication-card"))
+      .some((card) => !card.classList.contains("is-hidden"));
+    group.classList.toggle("is-hidden", !hasVisibleCard);
   });
 
   if (countTarget) {
