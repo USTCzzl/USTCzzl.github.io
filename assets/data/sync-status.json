@@ -1,5 +1,5 @@
 {
-  "lastCheckedDate": "2026-08-05",
+  "lastCheckedDate": "2026-08-06",
   "timezone": "Asia/Singapore",
   "sources": {
     "DBLP": true,
@@ -10,11 +10,11 @@
     "GitHub": true
   },
   "publicationMetrics": {
-    "total": 21,
+    "total": 23,
     "journals": 13,
-    "conferences": 7,
+    "conferences": 9,
     "preprints": 1,
-    "firstAuthorWorks": 6,
+    "firstAuthorWorks": 8,
     "firstAuthorJournals": 5,
     "earliestYear": 2022,
     "latestYear": 2026
