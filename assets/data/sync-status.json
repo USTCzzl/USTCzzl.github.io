@@ -1,8 +1,8 @@
 {
-  "lastCheckedDate": "2026-08-13",
+  "lastCheckedDate": "2026-08-14",
   "timezone": "Asia/Singapore",
   "sources": {
-    "DBLP": true,
+    "DBLP": false,
     "ORCID": true,
     "ORCIDProfile": true,
     "OpenAlex": true,
