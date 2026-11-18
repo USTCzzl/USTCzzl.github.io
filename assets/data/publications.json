@@ -1,5 +1,36 @@
 [
   {
+    "key": "doi:10.1109/rcar70436.2026.11765269",
+    "type": "conference",
+    "year": 2026,
+    "publishedDate": "2026-11-16",
+    "title": "Semantic Keypoint-Based Task Planning and Execution Under Spatio-Temporal Logic Constraints",
+    "authors": [
+      "Yuan Qiao",
+      "Zhangli Zhou",
+      "Hao Li",
+      "Mingyu Cai",
+      "Zhen Kan"
+    ],
+    "venue": "2026 IEEE International Conference on Real-time Computing and Robotics (RCAR)",
+    "journal": "",
+    "booktitle": "2026 IEEE International Conference on Real-time Computing and Robotics (RCAR)",
+    "volume": "",
+    "number": "",
+    "pages": "472-477",
+    "doi": "10.1109/rcar70436.2026.11765269",
+    "doiUrl": "https://doi.org/10.1109/rcar70436.2026.11765269",
+    "arxiv": "",
+    "dblpUrl": "",
+    "firstAuthor": false,
+    "code": "",
+    "video": "",
+    "pdf": "",
+    "image": "",
+    "id": "pub-semantic-keypoint-based-task-planning-and-execution-under-spatio-tempora",
+    "citationKey": "rcar70436202611765269"
+  },
+  {
     "key": "doi:10.1109/icca69928.2026.11618058",
     "type": "conference",
     "year": 2026,

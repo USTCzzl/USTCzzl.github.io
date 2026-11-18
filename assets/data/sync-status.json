@@ -1,18 +1,18 @@
 {
-  "lastCheckedDate": "2026-11-17",
+  "lastCheckedDate": "2026-11-18",
   "timezone": "Asia/Singapore",
   "sources": {
     "DBLP": true,
     "ORCID": true,
     "ORCIDProfile": true,
     "OpenAlex": true,
-    "Crossref": true,
+    "Crossref": false,
     "GitHub": true
   },
   "publicationMetrics": {
-    "total": 23,
+    "total": 24,
     "journals": 13,
-    "conferences": 9,
+    "conferences": 10,
     "preprints": 1,
     "firstAuthorWorks": 8,
     "firstAuthorJournals": 5,
