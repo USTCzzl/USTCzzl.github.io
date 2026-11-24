@@ -1,12 +1,12 @@
 {
-  "lastCheckedDate": "2026-11-23",
+  "lastCheckedDate": "2026-11-24",
   "timezone": "Asia/Singapore",
   "sources": {
     "DBLP": true,
     "ORCID": true,
     "ORCIDProfile": true,
     "OpenAlex": true,
-    "Crossref": true,
+    "Crossref": false,
     "GitHub": true
   },
   "publicationMetrics": {
